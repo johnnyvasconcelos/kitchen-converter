@@ -1,391 +1,395 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Conversor de Medidas para Cozinha. Como converter Gramas em Xícaras (Chá), Colheres (Sopa), Colheres (Chá), Copo Americano, Mililitros (ML) e Quilos de forma prática e fácil!">
-    <meta name="keywords" content="conversor de medidas para cozinha, conversor culinário, converter colheres de sopa, converter xícaras, medidas culinárias, tabela de conversão de medidas, quantas colheres cabem em uma xícara, como converter medidas culinárias, medidas de cozinha, conversão de medidas de cozinha">
-    <title>Conversor de Medidas Culinárias</title>
-    <!-- Style -->
-    <link rel="icon" type="image/x-icon" href="./assets/images/favicon.webp">
-    <link rel="stylesheet" href="./assets/style/style.css">
-    <!-- JavaScript -->
-    <script src="./assets/script/vue.min.js" defer></script>
-    <script src="./assets/script/measures.js" defer></script>
-</head>
-<body>
-    <div class="wrapper" id="app">
-    <header>
-        <!-- top bar -->
-        <article class="call-to-action yellow">
-            <div class="container">
-                <div class="top-bar">
-                    <p class="newsletter">Assine nossa newsletter!</p>
-                    <div class="book-area">
-                        <p>Receitas de Bolos Incríveis. Eleve suas habilidades na confeitaria! <a href="https://amzn.to/3J9ag5z" target="_blank">Adquira já a sua cópia!</a> ↣</p>
-                        <img width="70" src="./assets/images/top-cover.webp" alt="Livro de Receitas - Confeitaria.">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Conversor de Medidas para Cozinha. Como converter Gramas em Xícaras (Chá), Colheres (Sopa), Colheres (Chá), Copo Americano, Mililitros (ML) e Quilos de forma prática e fácil!">
+        <meta name="keywords" content="conversor de medidas para cozinha, conversor culinário, converter colheres de sopa, converter xícaras, medidas culinárias, tabela de conversão de medidas, quantas colheres cabem em uma xícara, como converter medidas culinárias, medidas de cozinha, conversão de medidas de cozinha">
+        <title>Conversor de Medidas Culinárias</title>
+        <!-- Style -->
+        <link rel="icon" type="image/x-icon" href="./assets/images/favicon.webp">
+        <link rel="stylesheet" href="./assets/style/main.css">
+        <!-- JavaScript -->
+        <script src="./assets/script/vue.min.js" defer></script>
+        <script src="./assets/script/measures.js" defer></script>
+    </head>
+    <body>
+        <div class="wrapper" id="app">
+            <!-- header -->
+            <header>
+            <!-- top bar -->
+                <div class="call-to-action yellow">
+                    <div class="container">
+                        <div class="top-bar">
+                            <p class="newsletter">Assine nossa newsletter!</p>
+                            <div class="book-area">
+                                <p>Receitas de Bolos Incríveis. Eleve suas habilidades na confeitaria! <a href="#">Adquira já a sua cópia!</a> ↣</p>
+                                <img width="70" src="./assets/images/top-cover.webp" alt="Livro de Receitas - Confeitaria.">
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </article>
-        <!-- navbar -->
-        <nav class="main-nav">
-            <div class="container">
-                <a href="./index.html" class="logomobile">
-                    Mesa do Chef
-                </a>
-                <ul class="menu menu-left">
-                    <li><a href="#">Início</a></li>
-                    <li><a href="#">Receitas</a></li>
-                    <li><a href="#">Blog</a></li>
-                </ul>
-                <a class="logo" href="./index.html">
-                    <img src="./assets/images/mesa-do-chef-logo.webp" alt="Mesa do Chef - Logotipo." title="Mesa do Chef">
-                </a>
-                <ul class="menu menu-right">
-                    <li><a href="https://mesadochef.com.br/quem-somos">Sobre</a></li>
-                    <li><a href="https://mesadochef.com.br/contato/">Contato</a></li>
-                    <li><a href="https://mesadochef.com.br/politica-de-privacidade/">Privacidade</a></li>
-                </ul>
-                <div class="mobilebtn" @click="menumob = true">
-                    <span class="icon" @click="menumob = true"></span>
+                <!-- navbar -->
+                <nav class="main-nav">
+                    <div class="container">
+                        <a href="./index.html" class="logomobile">
+                            Mesa do Chef
+                        </a>
+                        <ul class="menu menu-left">
+                            <li><a href="#">Início</a></li>
+                            <li><a href="#">Receitas</a></li>
+                            <li><a href="#">Blog</a></li>
+                        </ul>
+                        <a class="logo" href="./index.html">
+                            <img src="./assets/images/mesa-do-chef-logo.webp" alt="Mesa do Chef - Logotipo." title="Mesa do Chef">
+                        </a>
+                        <ul class="menu menu-right">
+                            <li><a href="https://mesadochef.com.br/quem-somos">Sobre</a></li>
+                            <li><a href="https://mesadochef.com.br/contato/">Contato</a></li>
+                            <li><a href="https://mesadochef.com.br/politica-de-privacidade/">Privacidade</a></li>
+                        </ul>
+                        <div class="mobilebtn" @click="menumob = true">
+                            <span class="icon" @click="menumob = true"></span>
+                        </div>
+                    </div>
+                </nav>
+                <div class="menumob" v-if="menumob">
+                    <div class="menu-area">
+                        <div class="closebtn" @click="menumob = false">
+                            <span class="icon" @click="menumob = false"></span>
+                        </div>
+                        <ul>
+                            <li><a @click="menumob = false" href="https://mesadochef.com.br/">Início</a></li>
+                            <li><a @click="menumob = false" href="https://mesadochef.com.br/category/blog/">Blog</a></li>
+                            <li><a @click="menumob = false" href="https://mesadochef.com.br/contato/">Contato</a></li>
+                            <li><a @click="menumob = false" href="https://mesadochef.com.br/quem-somos/">Quem Somos</a></li>
+                            <li><a @click="menumob = false" href="https://mesadochef.com.br/conversor-de-medidas-culinarias.html">Conversor de Medidas</a></li>
+                        </ul>
+                        <div class="social">
+                            <a href="#" @click="menumob = false"><span class="pinterest"></span></a>
+                            <a href="#" @click="menumob = false"><span class="instagram"></span></a>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </nav>
-        <div class="menumob" v-if="menumob">
-            <div class="menu-area">
-                <div class="closebtn" @click="menumob = false">
-                    <span class="icon" @click="menumob = false"></span>
+            </header>
+            <main class="main-container">
+                <h1>Conversor de Medidas Culinárias + Tabelas</h1>
+                <section>
+                    <br><br>
+                    <figure>
+                        <img src="./assets/images/medidas-culinarias.webp" alt="Xícaras de Chá, Xícaras de Café e Copos encima de uma mesa. Medidas culinárias para conversão." class="topo-img" style="width: 100%">
+                        <figcaption>Conversor de Medidas Culinárias. Imagem de <a href="https://www.pxfuel.com/" target="_blank">pxfuel.com</a></figcaption>
+                    </figure>
+                    <br>
+                    <p class="parag">Conversor de Medidas Culinárias Online! Converta medidas de ingredientes para receitas: xícaras, colheres de chá, colheres de sobremesa, mililitros(ml), gramas e outros. Escolha um ingrediente, coloque a unidade de medida e clique no botão para converter.</p>
+                    <br><br><br>
+                    <!-- main form -->
+                    <form class="medida-form">
+                        <div class="area-input">
+                            <label>Selecione um Ingrediente</label>
+                            <select  v-model="ingredienteAtivo">
+                                <option disabled value="">Selecione um Ingrediente:</option>
+                                <option value="Açúcar Cristal">Açúcar Cristal</option>
+                                <!--<option value="Açúcar Refinado">Açúcar Refinado</option>-->
+                                <option value="Arroz Cru">Arroz Cru</option>
+                                <!--<option value="Azeitonas sem Caroço">Azeitonas sem Caroço</option>-->
+                                <!--<option value="Bacon Picado">Bacon Picado</option>-->
+                                <!--<option value="Biscoitos de Maisena em Pedaços">Biscoitos de Maisena</option>-->
+                                <option value="Carne Moída">Carne Moída</option>
+                                <!--<option value="Cebola(s) Picada(s)">Cebola(s) Picada(s)</option>-->
+                                <!--<option value="Chocolate Derretido">Chocolate Derretido</option>-->
+                                <!--<option value="Chocolate em Pó">Chocolate em Pó</option>-->
+                                <!--<option value="Coco Ralado">Coco Ralado</option>-->
+                                <!--<option value="Ervilhas Cozidas">Ervilhas Cozidas</option>-->
+                                <option value="Farinha de Trigo">Farinha de Trigo</option>
+                                <option value="Feijão Cru">Feijão Cru</option>
+                                <option value="Frango Desfiado">Frango Desfiado</option>
+                                <!--<option value="Grãos de Milho Cozidos">Grãos de Milho</option>-->
+                                <!--<option value="Iogurte">Iogurte</option>-->
+                                <!--<option value="Leite em Pó">Leite em Pó</option>-->
+                                <option value="Líquidos">Líquidos</option>
+                                <!--<option value="Maionese">Maionese</option>-->
+                                <option value="Manteiga">Manteiga</option>
+                                <option value="Mel">Mel</option>
+                                <!--<option value="Nutella">Nutella</option>-->
+                                <option value="Pó de Café">Pó de Café</option>
+                                <!--<option value="Salsinha(s) Picada(s)">Salsinha(s) Picada(s)</option>-->
+                                <option value="Sal">Sal Comum</option>
+                                <!--<option value="Tomate(s) Picado(s)">Tomate(s) Picado(s)</option>-->
+                            </select>
+                        </div>
+                        <div class="area-input">
+                            <label>Selecione uma Medida</label>
+                            <select  v-model="medidaAtiva">
+                                <option disabled value="">Selecione uma Medida:</option>
+                                <option value="Colher(es) de Sopa" v-if="ingredienteAtivo == 'Açúcar Cristal' || ingredienteAtivo == 'Farinha de Trigo' || ingredienteAtivo == 'Líquidos' || ingredienteAtivo == 'Manteiga' || ingredienteAtivo == 'Mel' || ingredienteAtivo == 'Frango Desfiado' || ingredienteAtivo == 'Pó de Café' || ingredienteAtivo == 'Sal' || ingredienteAtivo == 'Carne Moída'">Colher de Sopa</option>
+                                <option value="Colher(es) de Sobremesa" v-if="ingredienteAtivo == 'Açúcar Cristal' || ingredienteAtivo == 'Coco Ralado' || ingredienteAtivo == 'Líquidos' || ingredienteAtivo == 'Manteiga' || ingredienteAtivo == 'Mel' || ingredienteAtivo == 'Pó de Café' || ingredienteAtivo == 'Sal'">Colher de Sobremesa</option>
+                                <option value="Colher(es) de Chá" v-if="ingredienteAtivo == 'Açúcar Cristal' || ingredienteAtivo == 'Coco Ralado'|| ingredienteAtivo == 'Líquidos' || ingredienteAtivo == 'Manteiga' || ingredienteAtivo == 'Mel' || ingredienteAtivo == 'Pó de Café' || ingredienteAtivo == 'Sal'">Colher de Chá</option>
+                                <option value="Colher(es) de Café" v-if="ingredienteAtivo == 'Açúcar Cristal' || ingredienteAtivo == 'Coco Ralado' || ingredienteAtivo == 'Líquidos' || ingredienteAtivo == 'Mel' || ingredienteAtivo == 'Café' || ingredienteAtivo == 'Sal'">Colher de Café</option>
+                                <option value="Xícara(s) de Chá" v-if="ingredienteAtivo == 'Açúcar Cristal' || ingredienteAtivo == 'Carne Moída' || ingredienteAtivo == 'Arroz Cru' || ingredienteAtivo == 'Coco Ralado' || ingredienteAtivo == 'Farinha de Trigo' || ingredienteAtivo == 'Feijão Cru' || ingredienteAtivo == 'Frango Desfiado' || ingredienteAtivo == 'Líquidos' || ingredienteAtivo == 'Mel' || ingredienteAtivo == 'Pó de Café'">Xícara de Chá</option>
+                                <option value="Copo(s) Americano(s)" v-if="ingredienteAtivo == 'Açúcar Cristal' || ingredienteAtivo == 'Coco Ralado' || ingredienteAtivo == 'Farinha de Trigo' || ingredienteAtivo == 'Arroz Cru' || ingredienteAtivo == 'Feijão Cru' || ingredienteAtivo == 'Líquidos' || ingredienteAtivo == 'Mel' || ingredienteAtivo == 'Pó de Café' || ingredienteAtivo == 'Carne Moída'">Copo Americano</option>
+                                <option value="Gramas" v-if="ingredienteAtivo == 'Açúcar Cristal' || ingredienteAtivo == 'Arroz Cru' || ingredienteAtivo == 'Carne Moída' || ingredienteAtivo == 'Coco Ralado' || ingredienteAtivo == 'Farinha de Trigo' || ingredienteAtivo == 'Feijão Cru' || ingredienteAtivo == 'Manteiga' || ingredienteAtivo == 'Mel' || ingredienteAtivo == 'Pó de Café' || ingredienteAtivo == 'Frango Desfiado' || ingredienteAtivo == 'Sal'">Gramas</option>
+                                <option value="Quilo(s)" v-if="ingredienteAtivo == 'Açúcar Cristal' || ingredienteAtivo == 'Arroz Cru' || ingredienteAtivo == 'Carne Moída' || ingredienteAtivo == 'Farinha de Trigo'">Quilos</option>
+                                <option value="Mililitros (ML)" v-if="ingredienteAtivo == 'Líquidos' || ingredienteAtivo == 'Mel'">Mililitros (ML)</option>
+                                <option value="Litro(s)" v-if="ingredienteAtivo == 'Líquidos' || ingredienteAtivo == 'Mel'">Litros</option>
+                            </select>
+                        </div>
+                        <div class="area-input">
+                            <label>Quantidade</label>
+                            <select v-if="medidaAtiva == 'Colher(es) de Sopa' || medidaAtiva == 'Colher(es) de Sobremesa' || medidaAtiva == 'Colher(es) de Chá' || medidaAtiva == 'Colher(es) de Café' || medidaAtiva == 'Xícara(s) de Chá' || medidaAtiva == 'Copo(s) Americano(s)'" v-model="multiplicador">
+                                <option disabled value="">Quantidade:</option>
+                                <option value="1">1</option>
+                                <option value="0.5">1/2</option>
+                                <option value="0.3333333334">1/3</option>
+                                <option value="0.25">1/4</option>
+                                <option value="1.5">1 1/2</option>
+                                <option value="2">2</option>
+                                <option value="2.5">2 1/2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                            <input v-else class="inputvalue" type="number" value="1" v-model="inputvalue">
+                        </div>
+                    </form><br>
+                    <div class="formbtn-area">
+                        <button type="button" class="formbtn" @click="resultFunction">
+                            <span>converter</span>
+                            <img src="https://mesadochef.com.br/wp-content/uploads/2023/07/garfo-faca.svg" alt="ìcone de Garfo e Faca.">
+                        </button>
+                    </div>
+                    <!-- results -->
+                    <div class="resultado">
+                        <p><strong class="tipo" v-if="medidaAtiva == 'Gramas' || medidaAtiva == 'Mililitros (ML)' || medidaAtiva == 'Litro(s)' || medidaAtiva == 'Quilo(s)'">{{inputvalue}}</strong><strong class="tipo" v-else>{{quantidadeAtiva}}</strong>
+                        <strong class="tipo">{{medidaAtiva}}</strong> de
+                        <strong class="tipo">{{ingredienteAtivo}}</strong> equivale(m) a:</p><br>
+                        <!-- Cálculos -->
+                        <p v-if="Ugramas > 0">{{Ugramas}} <strong>Gramas</strong>.</p>
+                        <p v-if="xicaraCha > 0">{{xicaraCha}} <strong>Xícara(s) de Chá</strong>{{complementoXicara}}.</p>
+                        <p v-if="colherSopa > 0">{{colherSopa}} <strong>Colher(es) de Sopa</strong>{{complementoColherSopa}}.</p>
+                        <p v-if="colherSobremesa > 0">{{colherSobremesa}} <strong>Colher(es) de Sobremesa</strong>{{complementoColherSobremesa}}.</p>
+                        <p v-if="colherCha > 0">{{colherCha}} <strong>Colher(es) de Chá</strong>.</p>
+                        <p v-if="colherCafe > 0">{{colherCafe}} <strong>Colher(es) de Café</strong>.</p>
+                        <p v-if="copoAmericano > 0">{{copoAmericano}} <strong>Copo(s) Americano(s)</strong>{{complementoCopo}}.</p>
+                        <p v-if="Uquilos > 0">{{Uquilos}} <strong>Quilo(s)</strong>.</p>
+                        <p v-if="Umililitros > 0">{{Umililitros}} <strong>Mililitros (ML)</strong>.</p>
+                        <p v-if="Ulitros > 0">{{Ulitros}} <strong>Litro(s)</strong>.</p> 
+                    </div><br><br><br>
+                    <!-- texts and info -->
+                    <p class="parag listas" v-if="ingredienteAtivo == 'Açúcar Cristal'">
+                        - Uma <strong>colher de sopa</strong> comporta aproximadamente <strong>17g</strong> de açúcar.<br>
+                        - Uma <strong>colher de sobremesa</strong> comporta aproximadamente <strong>11g</strong> de açúcar.<br>
+                        - Uma <strong>colher de chá</strong> comporta aproximadamente <strong>6g</strong> de açúcar.<br>
+                        - Uma <strong>colher de café</strong> comporta aproximadamente <strong>3g</strong> de açúcar.<br>
+                        - Uma <strong>xícara de chá</strong> comporta aproximadamente <strong>175g</strong> de açúcar.<br>
+                        - Um <strong>copo americano</strong> comporta aproximadamente <strong>140g</strong> de açúcar.
+                    </p>
+                    <p class="parag listas" v-if="ingredienteAtivo == 'Carne Moída'">
+                        - Uma <strong>colher de sopa</strong> comporta aproximadamente <strong>24g</strong> de carne moída.<br>
+                        - Uma <strong>xícara de chá</strong> comporta aproximadamente <strong>172g</strong> de carne moída.<br>
+                        - Um <strong>copo americano</strong> comporta aproximadamente <strong>138g</strong> de carne moída.
+                    </p>
+                    <p class="parag listas" v-if="ingredienteAtivo == 'Arroz Cru'">
+                        - Uma <strong>xícara de chá</strong> comporta aproximadamente <strong>210g</strong> de arroz cru.<br>
+                        - Um <strong>copo americano</strong> comporta aproximadamente <strong>180g</strong> de arroz cru.
+                    </p>
+                    <p class="parag listas" v-if="ingredienteAtivo == 'Farinha de Trigo'">
+                        - Uma <strong>colher de sopa</strong> comporta aproximadamente <strong>14g</strong> de farinha de trigo.<br>
+                        - Uma <strong>xícara de chá</strong> comporta aproximadamente <strong>140g</strong> de farinha de trigo.<br>
+                        - Um <strong>copo americano</strong> comporta aproximadamente <strong>115g</strong> de farinha de trigo.
+                    </p>
+                    <p class="parag listas" v-if="ingredienteAtivo == 'Feijão Cru'">
+                        - Uma <strong>xícara de chá</strong> comporta aproximadamente <strong>250g</strong> de feijão cru.<br>
+                        - Um <strong>copo americano</strong> comporta aproximadamente <strong>170g</strong> de feijão cru.
+                    </p>
+                    <p class="parag listas" v-if="ingredienteAtivo == 'Frango Desfiado'">
+                        - Uma <strong>colher de sopa</strong> comporta aproximadamente <strong>18g</strong> de frango desfiado.<br>
+                        - Uma <strong>xícara de chá</strong> comporta aproximadamente <strong>128g</strong> de frango desfiado.
+                    </p>
+                    <p class="parag listas" v-if="ingredienteAtivo == 'Líquidos' || ingredienteAtivo == 'Mel'">
+                        - Uma <strong>colher de sopa</strong> comporta aproximadamente <strong>15ml</strong><span v-if="ingredienteAtivo == 'Mel'">(18g) de mel</span>.<br>
+                        - Uma <strong>colher de sobremesa</strong> comporta aproximadamente <strong>10ml</strong><span v-if="ingredienteAtivo == 'Mel'">(12g) de mel</span>.<br>
+                        - Uma <strong>colher de chá</strong> comporta aproximadamente <strong>5ml</strong><span v-if="ingredienteAtivo == 'Mel'">(6g) de mel</span>.<br>
+                        - Uma <strong>colher de café</strong> comporta aproximadamente <strong>2.5ml</strong><span v-if="ingredienteAtivo == 'Mel'">(3g) de mel</span>.<br>
+                        - Uma <strong>xícara de chá</strong> comporta aproximadamente <strong>240ml</strong><span v-if="ingredienteAtivo == 'Mel'">(300g) de mel</span>.<br>
+                        - Um <strong>copo americano</strong> comporta aproximadamente <strong>190ml</strong><span v-if="ingredienteAtivo == 'Mel'">(237g) de mel</span>.<br>
+                    </p>
+                    <p class="parag listas" v-if="ingredienteAtivo == 'Manteiga'">
+                        - Uma <strong>colher de sopa</strong> comporta aproximadamente <strong>18g</strong> de manteiga.<br>
+                        - Uma <strong>colher de sobremesa</strong> comporta aproximadamente <strong>12g</strong> de manteiga.<br>
+                        - Uma <strong>colher de chá</strong> comporta aproximadamente <strong>6g</strong> de manteiga.<br>
+                        - Uma <strong>colher de café</strong> comporta aproximadamente <strong>3g</strong> de manteiga.
+                    </p>
+                    <p class="parag listas" v-if="ingredienteAtivo == 'Pó de Café'">
+                        - Uma <strong>colher de sopa</strong> comporta aproximadamente <strong>9g</strong> de pó de café.<br>
+                        - Uma <strong>colher de sobremesa</strong> comporta aproximadamente <strong>6g</strong> de pó de café.<br>
+                        - Uma <strong>colher de chá</strong> comporta aproximadamente <strong>3g</strong> de pó de café.<br>
+                        - Uma <strong>xícara de chá</strong> comporta aproximadamente <strong>90g</strong> de pó de café.<br>
+                        - Um <strong>copo americano</strong> comporta aproximadamente <strong>60g</strong> de pó de café.
+                    </p>
+                    <p class="parag listas" v-if="ingredienteAtivo == 'Sal'">
+                        - Uma <strong>colher de sopa</strong> comporta aproximadamente <strong>18g</strong> de sal.<br>
+                        - Uma <strong>colher de sobremesa</strong> comporta aproximadamente <strong>12g</strong> de sal.<br>
+                        - Uma <strong>colher de chá</strong> comporta aproximadamente <strong>6g</strong> de sal.<br>
+                        - Uma <strong>colher de café</strong> comporta aproximadamente <strong>3g</strong> de sal.
+                    </p>
+                    <p class="parag parag-none" v-if="medidaAtiva == 'Colher(es) de Sopa' || medidaAtiva == 'Colher(es) de Sobremesa' || medidaAtiva == 'Colher(es) de Chá' || medidaAtiva == 'Colher(es) de Café' || medidaAtiva == 'Xícara(s) de Chá' || medidaAtiva == 'Copo(s) Americano(s)'">
+                        *Os valores <span v-if="medidaAtiva == 'Copo(s) Americano(s)'">dos</span><span v-else>das</span> {{medidaAtiva}} podem variar.
+                    </p>
+                    <!-- Tables -->
+                    <!-- cups -->
+                    <section class="main content">
+                        <h2>Tabela de Ingredientes Comuns: Medidas de Copos e Colheres<span style="display:none">Convertidas</span></h2>
+                        <table>
+                            <thead>
+                                <tr><th>Medida</th><th>Ingrediente</th><th>Quantidade</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td rowspan="8" title="Xícara de Chá"><img src="https://mesadochef.com.br/wp-content/uploads/2023/07/xicara-de-cha.webp" alt="Xícara de chá para saber as medidas em gramas e mililitros na cozinha." title="Xícara de Chá" class="xicaracha"><p>Xícara de Chá</p></td><td>Açúcar Cristal</td><td><p>175g</p></td></tr>
+                                <tr><td>Arroz Cru</td><td>210g</td></tr>
+                                <tr><td>Farinha de Trigo</td><td>140g</td></tr>
+                                <tr><td>Feijão Cru</td><td>250g</td></tr>
+                                <tr><td>Frango Desfiado</td><td>128g</td></tr>
+                                <tr><td class="gray">Líquido(s)</td><td class="gray">240ml</td></tr>
+                                <tr><td>Mel</td><td>300g</td></tr>
+                                <tr class="mb"><td>Pó de Café</td><td>90g</td></tr>
+                                <tr class="darkyellow titulo"><th>Medida</th><th>Ingrediente</th><th>Quantidade</th></tr>
+                                <tr class="darkyellow" title="Colher de Sopa"><td rowspan="8" title="Colher de Sopa"><img src="https://mesadochef.com.br/wp-content/uploads/2023/07/colher-de-sopa.webp" alt="Colher de Sopa para medidas culinárias." title="Colher de Sopa"><p>Colher de Sopa</p></td><td>Açúcar Cristal</td><td>17.5g</td></tr>
+                                <tr class="darkyellow"><td>Farinha de Trigo</td><td>14g</td></tr>
+                                <tr class="darkyellow"><td>Frango Desfiado</td><td>18g</td></tr>
+                                <tr class="darkyellow"><td class="gray">Líquido(s)</td><td class="gray">15ml</td></tr>
+                                <tr class="darkyellow"><td>Manteiga</td><td>18g</td></tr>
+                                <tr class="darkyellow"><td>Mel</td><td>18.8g</td></tr>
+                                <tr class="darkyellow"><td>Pó de Café</td><td>9g</td></tr>
+                                <tr class="darkyellow mb"><td>Sal Comum</td><td>18g</td></tr>
+                                <tr class="titulo"><th>Medida</th><th>Ingrediente</th><th>Quantidade</th></tr>
+                                <tr><td rowspan="8" title="Colher de Sobremesa"><img src="https://mesadochef.com.br/wp-content/uploads/2023/07/colher-de-sobremesa.webp" alt="Colher de sobremesa para medidas na cozinha." title="Colher de Sobremesa"><p>Colher de Sobremesa</p></td><td>Açúcar Cristal</td><td>11.7g</td></tr>
+                                <tr><td>Farinha de Trigo</td><td>9.3g</td></tr>
+                                <tr><td>Frango Desfiado</td><td>12g</td></tr>
+                                <tr><td class="gray">Líquido(s)</td><td class="gray">10ml</td></tr>
+                                <tr><td>Manteiga</td><td>12g</td></tr>
+                                <tr><td>Mel</td><td>12.5g</td></tr>
+                                <tr><td>Pó de Café</td><td>6g</td></tr>
+                                <tr class="mb"><td>Sal Comum</td><td>12g</td></tr>
+                                <tr class="darkyellow titulo"><th>Medida</th><th>Ingrediente</th><th>Quantidade</th></tr>
+                                <tr title="Colher de Chá" class="darkyellow"><td rowspan="6"><img src="https://mesadochef.com.br/wp-content/uploads/2023/07/colher-de-cafe.webp" alt="Colher de Chá para medir ingredientes na cozinha." title="Colher de Chá"><p>Colher de Chá</p></td><td>Açúcar Cristal</td><td>5.8g</td></tr>
+                                <tr class="darkyellow"><td>Farinha de Trigo</td><td>4.6g</td></tr>
+                                <tr class="darkyellow"><td class="gray">Líquido(s)</td><td class="gray">5ml</td></tr>
+                                <tr class="darkyellow"><td>Manteiga</td><td>6g</td></tr>
+                                <tr class="darkyellow"><td>Pó de Café</td><td>3g</td></tr>
+                                <tr class="darkyellow mb"><td>Sal Comum</td><td>6g</td></tr>
+                                <tr class="titulo"><th>Medida</th><th>Ingrediente</th><th>Quantidade</th></tr>
+                                <tr><td title="Colher de Café" rowspan="6"><img src="https://mesadochef.com.br/wp-content/uploads/2023/07/colher-de-cha.webp" alt="Colher de Café para Medidas de Culinárias." title="Colher de Café"><p>Colher de Café</p></td><td>Açúcar Cristal</td><td>2.9g</td></tr>
+                                <tr><td>Farinha de Trigo</td><td>2.3g</td></tr>
+                                <tr><td>Líquido(s)</td><td>2.5ml</td></tr>
+                                <tr><td>Mel</td><td>3.1g</td></tr>
+                                <tr><td>Pó de Café</td><td>1.5g</td></tr>
+                                <tr><td class="mb">Sal Comum</td><td>3g</td></tr>
+                                <tr class="darkyellow titulo"><th>Medida</th><th>Ingrediente</th><th>Quantidade</th></tr>
+                                <tr class="darkyellow"><td title="Copo Americano" rowspan="9"><img src="https://mesadochef.com.br/wp-content/uploads/2023/07/copo-americano.webp" alt="Copo Americano de bar para medir ingredientes culinários." title="Copo Americano"><p>Copo Americano</p></td><td>Açúcar Cristal</td><td>140g</td></tr>
+                                <tr class="darkyellow"><td>Arroz Cru</td><td>180g</td></tr>
+                                <tr class="darkyellow"><td>Farinha de Trigo</td><td>115g</td></tr>
+                                <tr class="darkyellow"><td>Feijão Cru</td><td>170g</td></tr>
+                                <tr class="darkyellow"><td>Frango Desfiado</td><td>105g</td></tr>
+                                <tr class="darkyellow"><td>Líquido(s)</td><td>190ml</td></tr>
+                                <tr class="darkyellow"><td>Mel</td><td>237.5g</td></tr>
+                                <tr class="darkyellow"><td>Pó de Café</td><td>60g</td></tr>
+                                <tr class="darkyellow"><td>Sal Comum</td><td>260g</td></tr>
+                                <!--
+                                <tr title="Mililitros (ML)"><td><img src="https://mesadochef.com.br/wp-content/uploads/2023/07/mililitros.webp" alt="Mililitros (MLs) para medidas culinárias." title="Mililitros"><p>Mililitros (ML)</p></td></tr>
+                                <tr title="Litros"><td><img src="https://mesadochef.com.br/wp-content/uploads/2023/07/litros.webp" alt="Litros - Conversão de medidas para cozinha." title="Litros"><p>Litros</p></td></tr>
+                                <tr title="Gramas"><td><img src="https://mesadochef.com.br/wp-content/uploads/2023/07/gramas.webp" alt="Saleiro de Sal para medir gramas, receitas." title="Gramas"><p>Gramas</p></td></tr>
+                                <tr title="Quilos"><td><img src="https://mesadochef.com.br/wp-content/uploads/2023/07/quilos.webp" alt="Peixe Cru. Quilos como medidas para cozinha." title="Quilos"><p>Quilos</p></td></tr>
+                                -->
+                            </tbody>
+                        </table>
+                    </section>
+                    <!-- sugar -->
+                    <div class="tabela-conversao content">
+                        <h2>Tabela de Conversão de Medidas (Açúcar Cristal)</h2>
+                        <table class="darkyellow">
+                            <thead>
+                                <tr><th>Medida</th><th>Quantidade</th><th>Convertido</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>1 xícara (chá)</td><td>175g</td><td>10 colheres (sopa).</td></tr>
+                                <tr><td>1 1/2 xícara (chá)</td><td>262.5g</td><td>15 colheres (sopa)</td></tr>
+                                <tr><td>1/2 xícara (chá)</td><td>87.5g</td><td>5 colheres (sopa).</td></tr>
+                                <tr><td>1/3 xícara (chá)</td><td>43,75g</td><td>2 colheres (sopa) + 1 colher (chá).</td></tr>
+                                <tr><td>1/4 xícara (chá)</td><td>21,87g</td><td>1 colher (sopa) + 1 colher (café).</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- wheat flour -->
+                    <div class="tabela-conversao content">
+                        <h2>Tabela de Conversão de Medidas (Farinha de Trigo)</h2>
+                        <table class="darkyellow">
+                            <thead>
+                                <tr><th>Medida</th><th>Quantidade</th><th>Convertido</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>1 xícara (chá)</td><td>140g</td><td>10 colheres (sopa).</td></tr>
+                                <tr><td>1 1/2 xícara (chá)</td><td>210g</td><td>15 colheres (sopa).</td></tr>
+                                <tr><td>1/2 xícara (chá)</td><td>70g</td><td>5 colheres (sopa).</td></tr>
+                                <tr><td>1/3 xícara (chá)</td><td>46.66g</td><td>3 colheres (sopa) + 1 colher (café).</td></tr>
+                                <tr><td>1/4 xícara (chá)</td><td>35g</td><td>2 colheres (sopa) + 1 colher (chá).</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- liquids -->
+                    <div class="tabela-conversao content">
+                        <h2>Tabela de Conversão de Medidas (Líquidos)</h2>
+                        <table class="darkyellow">
+                            <thead>
+                                <tr><th>Medida</th><th>Quantidade</th><th>Convertido</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>1 xícara (chá)</td><td>240ml</td><td>1 copo americano + 3 colheres (sopa) + 1 colher (chá)<br>ou 16 colheres (sopa).</td></tr>
+                                <tr><td>1 1/2 xícara (chá)</td><td>360ml</td><td>1 1/2 copo americano + 6 colheres (sopa) ou 24 colheres (sopa)</td></tr>
+                                <tr><td>1/2 xícara (chá)</td><td>120ml</td><td>7 colheres (sopa) + 1 colher (chá).</td></tr>
+                                <tr><td>1/3 xícara (chá)</td><td>80ml</td><td>5 colheres (sopa).</td></tr>
+                                <tr><td>1/4 xícara (chá)</td><td>60ml</td><td>3 colheres (sopa) + 1 colher (sobremesa).</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tabela-fracionaria content">
+                    <h2>Tabela Fracionária</h2>
+                        <table>
+                            <thead>
+                                <tr><th>Valor Fracionário</th><th>Valor Decimal</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>1/4 (Um Quarto)</td><td>0.2</td></tr>
+                                <tr><td>1/3 (Um Terço)</td><td>0.3</td></tr>
+                                <tr><td>1/2 (Meio)</td><td>0.5</td></tr>
+                                <tr><td>1 1/2 (Um e Meio)</td><td>1.5</td></tr>
+                                <tr><td>2 1/2 (Dois e Meio)</td><td>2.5</td></tr>
+                                <tr><td>2/3</td><td>0.6</td></tr>
+                            </tbody>
+                        </table>
+                    </div><br><br>
+                    <!-- article -->
+                    <img src="./assets/images/measures.webp" alt="Infográfico Medidas Conversor de Medidas Culinárias" style="width: 100%">
+                    <article class="info content resultado">
+                        <h2>Um pouco mais sobre o conversor de medidas<span style="display: none"> culinárias</span></h2>
+                        <p>Para medir as quantidades corretas, utilizamos balanças de cozinha e medidores comuns. Quando calculamos a quantidade de uma colher (sopa), pesamos algumas vezes uma colher rasa e uma colher cheia. Em média, uma colher (sopa) de açúcar tem cerca de 17,5 gramas, considerando que uma colher cheia cabe aproximadamente 19 gramas e uma colher rasa 13 gramas na maioria dos testes realizados.</p>
+                        <p>Também buscamos informações confiáveis na internet e testamos em casa usando uma balança de cozinha e utensílios como xícaras padrão de 240ml, colheres de sopa, café, sobremesa, chá e copos americanos tradicionais de bar. Combinando todas essas abordagens, temos confiança de que os valores fornecidos em nosso conversor online são precisos para ajudar qualquer pessoa que precise de medidas para receitas e culinária em geral.</p>
+                    </article>
+                    <!-- CTA -->
+                    <p class="cta">Conheça também o nosso <a href="https://johnnyvasconcelos.github.io/kitchen-temperature-converter/conversor-culinario-de-temperatura.html">Conversor de Temperatura</a>.</p>
+                    <!-- keywords -->
+                    <div class="palavras-chave content">
+                        <span>Palavras-Chave:</span> Conversor de medidas para cozinha, conversor de medidas culinárias, converter gramas para xícaras, converter gramas para colheres, converter ml para colheres de sopa, conversor culinário, conversor de medidas, tabela conversão de medidas, conversor de medidas de peso, transformar xícaras em colheres de sopa, conversão online de medidas de colher para cozinha, mesa do chef.
+                    </div>
+                </section>
+            </main>
+            <!-- footer -->
+            <footer class="content">
+                <div class="container">
+                    <p>2023. MESA DO CHEF. SITE DE RECEITAS ONLINE.</p>
+                    <a href="https://mesadochef.com.br/termos-e-condicoes/">Termos & Condições</a>
                 </div>
-                <ul>
-                    <li><a @click="menumob = false" href="https://mesadochef.com.br/">Início</a></li>
-                    <li><a @click="menumob = false" href="https://mesadochef.com.br/category/blog/">Blog</a></li>
-                    <li><a @click="menumob = false" href="https://mesadochef.com.br/contato/">Contato</a></li>
-                    <li><a @click="menumob = false" href="https://mesadochef.com.br/quem-somos/">Quem Somos</a></li>
-                    <li><a @click="menumob = false" href="https://mesadochef.com.br/conversor-de-medidas-culinarias.html">Conversor de Medidas</a></li>
-                </ul>
-                <div class="social">
-                    <a href="#" @click="menumob = false"><span class="pinterest"></span></a>
-                    <a href="#" @click="menumob = false"><span class="instagram"></span></a>
-                </div>
-            </div>
+            </footer>
         </div>
-    </header>
-    <div class="main-container">
-    <h1>Conversor de Medidas Culinárias + Tabelas</h1>
-<section>
-    <br><br>
-    <figure>
-        <img src="./assets/medidas-culinarias.webp" alt="Xícaras de Chá, Xícaras de Café e Copos encima de uma mesa. Medidas culinárias para conversão." class="topo-img" style="width: 100%">
-        <figcaption>Conversor de Medidas Culinárias. Imagem de <a href="https://www.pxfuel.com/" target="_blank">pxfuel.com</a></figcaption>
-    </figure>
-    <br>
-    <p class="parag">Conversor de Medidas Culinárias Online! Converta medidas de ingredientes para receitas: xícaras, colheres de chá, colheres de sobremesa, mililitros(ml), gramas e outros. Escolha um ingrediente, coloque a unidade de medida e clique no botão para converter.</p><br><br><br>
-    <!-- FORMULÁRIO DE MEDIDAS -->
-<form class="medida-form">
-<div class="area-input">
-<label>Selecione um Ingrediente</label>
-<select  v-model="ingredienteAtivo">
-    <option disabled value="">Selecione um Ingrediente:</option>
-    <option value="Açúcar Cristal">Açúcar Cristal</option>
-    <!--<option value="Açúcar Refinado">Açúcar Refinado</option>-->
-    <option value="Arroz Cru">Arroz Cru</option>
-    <!--<option value="Azeitonas sem Caroço">Azeitonas sem Caroço</option>-->
-    <!--<option value="Bacon Picado">Bacon Picado</option>-->
-    <!--<option value="Biscoitos de Maisena em Pedaços">Biscoitos de Maisena</option>-->
-    <option value="Carne Moída">Carne Moída</option>
-    <!--<option value="Cebola(s) Picada(s)">Cebola(s) Picada(s)</option>-->
-    <!--<option value="Chocolate Derretido">Chocolate Derretido</option>-->
-    <!--<option value="Chocolate em Pó">Chocolate em Pó</option>-->
-    <!--<option value="Coco Ralado">Coco Ralado</option>-->
-    <!--<option value="Ervilhas Cozidas">Ervilhas Cozidas</option>-->
-    <option value="Farinha de Trigo">Farinha de Trigo</option>
-    <option value="Feijão Cru">Feijão Cru</option>
-    <option value="Frango Desfiado">Frango Desfiado</option>
-    <!--<option value="Grãos de Milho Cozidos">Grãos de Milho</option>-->
-    <!--<option value="Iogurte">Iogurte</option>-->
-    <!--<option value="Leite em Pó">Leite em Pó</option>-->
-    <option value="Líquidos">Líquidos</option>
-    <!--<option value="Maionese">Maionese</option>-->
-    <option value="Manteiga">Manteiga</option>
-    <option value="Mel">Mel</option>
-    <!--<option value="Nutella">Nutella</option>-->
-    <option value="Pó de Café">Pó de Café</option>
-    <!--<option value="Salsinha(s) Picada(s)">Salsinha(s) Picada(s)</option>-->
-    <option value="Sal">Sal Comum</option>
-    <!--<option value="Tomate(s) Picado(s)">Tomate(s) Picado(s)</option>-->
-</select>
-</div>
-<div class="area-input">
-<label>Selecione uma Medida</label>
-<select  v-model="medidaAtiva">
-    <option disabled value="">Selecione uma Medida:</option>
-    <option value="Colher(es) de Sopa" v-if="ingredienteAtivo == 'Açúcar Cristal' || ingredienteAtivo == 'Farinha de Trigo' || ingredienteAtivo == 'Líquidos' || ingredienteAtivo == 'Manteiga' || ingredienteAtivo == 'Mel' || ingredienteAtivo == 'Frango Desfiado' || ingredienteAtivo == 'Pó de Café' || ingredienteAtivo == 'Sal' || ingredienteAtivo == 'Carne Moída'">Colher de Sopa</option>
-    <option value="Colher(es) de Sobremesa" v-if="ingredienteAtivo == 'Açúcar Cristal' || ingredienteAtivo == 'Coco Ralado' || ingredienteAtivo == 'Líquidos' || ingredienteAtivo == 'Manteiga' || ingredienteAtivo == 'Mel' || ingredienteAtivo == 'Pó de Café' || ingredienteAtivo == 'Sal'">Colher de Sobremesa</option>
-    <option value="Colher(es) de Chá" v-if="ingredienteAtivo == 'Açúcar Cristal' || ingredienteAtivo == 'Coco Ralado'|| ingredienteAtivo == 'Líquidos' || ingredienteAtivo == 'Manteiga' || ingredienteAtivo == 'Mel' || ingredienteAtivo == 'Pó de Café' || ingredienteAtivo == 'Sal'">Colher de Chá</option>
-    <option value="Colher(es) de Café" v-if="ingredienteAtivo == 'Açúcar Cristal' || ingredienteAtivo == 'Coco Ralado' || ingredienteAtivo == 'Líquidos' || ingredienteAtivo == 'Mel' || ingredienteAtivo == 'Café' || ingredienteAtivo == 'Sal'">Colher de Café</option>
-    <option value="Xícara(s) de Chá" v-if="ingredienteAtivo == 'Açúcar Cristal' || ingredienteAtivo == 'Carne Moída' || ingredienteAtivo == 'Arroz Cru' || ingredienteAtivo == 'Coco Ralado' || ingredienteAtivo == 'Farinha de Trigo' || ingredienteAtivo == 'Feijão Cru' || ingredienteAtivo == 'Frango Desfiado' || ingredienteAtivo == 'Líquidos' || ingredienteAtivo == 'Mel' || ingredienteAtivo == 'Pó de Café'">Xícara de Chá</option>
-    <option value="Copo(s) Americano(s)" v-if="ingredienteAtivo == 'Açúcar Cristal' || ingredienteAtivo == 'Coco Ralado' || ingredienteAtivo == 'Farinha de Trigo' || ingredienteAtivo == 'Arroz Cru' || ingredienteAtivo == 'Feijão Cru' || ingredienteAtivo == 'Líquidos' || ingredienteAtivo == 'Mel' || ingredienteAtivo == 'Pó de Café' || ingredienteAtivo == 'Carne Moída'">Copo Americano</option>
-    <option value="Gramas" v-if="ingredienteAtivo == 'Açúcar Cristal' || ingredienteAtivo == 'Arroz Cru' || ingredienteAtivo == 'Carne Moída' || ingredienteAtivo == 'Coco Ralado' || ingredienteAtivo == 'Farinha de Trigo' || ingredienteAtivo == 'Feijão Cru' || ingredienteAtivo == 'Manteiga' || ingredienteAtivo == 'Mel' || ingredienteAtivo == 'Pó de Café' || ingredienteAtivo == 'Frango Desfiado' || ingredienteAtivo == 'Sal'">Gramas</option>
-    <option value="Quilo(s)" v-if="ingredienteAtivo == 'Açúcar Cristal' || ingredienteAtivo == 'Arroz Cru' || ingredienteAtivo == 'Carne Moída' || ingredienteAtivo == 'Farinha de Trigo'">Quilos</option>
-    <option value="Mililitros (ML)" v-if="ingredienteAtivo == 'Líquidos' || ingredienteAtivo == 'Mel'">Mililitros (ML)</option>
-    <option value="Litro(s)" v-if="ingredienteAtivo == 'Líquidos' || ingredienteAtivo == 'Mel'">Litros</option>
-</select>
-</div>
-<div class="area-input">
-<label>Quantidade</label>
-<select v-if="medidaAtiva == 'Colher(es) de Sopa' || medidaAtiva == 'Colher(es) de Sobremesa' || medidaAtiva == 'Colher(es) de Chá' || medidaAtiva == 'Colher(es) de Café' || medidaAtiva == 'Xícara(s) de Chá' || medidaAtiva == 'Copo(s) Americano(s)'" v-model="multiplicador">
-<option disabled value="">Quantidade:</option>
-<option value="1">1</option>
-<option value="0.5">1/2</option>
-<option value="0.3333333334">1/3</option>
-<option value="0.25">1/4</option>
-<option value="1.5">1 1/2</option>
-<option value="2">2</option>
-<option value="2.5">2 1/2</option>
-<option value="3">3</option>
-<option value="4">4</option>
-<option value="5">5</option>
-</select>
-<input v-else class="inputvalue" type="number" value="1" v-model="inputvalue">
-</div>
-</form>
-<br>
-<div class="formbtn-area">
-<button type="button" class="formbtn" @click="resultFunction"><span>converter</span><img src="https://mesadochef.com.br/wp-content/uploads/2023/07/garfo-faca.svg" alt="ìcone de Garfo e Faca."></button>
-</div>
-<!-- Resultados -->
-<div class="resultado">
-<p><strong class="tipo" v-if="medidaAtiva == 'Gramas' || medidaAtiva == 'Mililitros (ML)' || medidaAtiva == 'Litro(s)' || medidaAtiva == 'Quilo(s)'">{{inputvalue}}</strong><strong class="tipo" v-else>{{quantidadeAtiva}}</strong>
-<strong class="tipo">{{medidaAtiva}}</strong> de
-<strong class="tipo">{{ingredienteAtivo}}</strong> equivale(m) a:</p>
-<!-- Cálculos -->
-<br>
-<p v-if="Ugramas > 0">{{Ugramas}} <strong>Gramas</strong>.</p>
-<p v-if="xicaraCha > 0">{{xicaraCha}} <strong>Xícara(s) de Chá</strong>{{complementoXicara}}.</p>
-<p v-if="colherSopa > 0">{{colherSopa}} <strong>Colher(es) de Sopa</strong>{{complementoColherSopa}}.</p>
-<p v-if="colherSobremesa > 0">{{colherSobremesa}} <strong>Colher(es) de Sobremesa</strong>{{complementoColherSobremesa}}.</p>
-<p v-if="colherCha > 0">{{colherCha}} <strong>Colher(es) de Chá</strong>.</p>
-<p v-if="colherCafe > 0">{{colherCafe}} <strong>Colher(es) de Café</strong>.</p>
-<p v-if="copoAmericano > 0">{{copoAmericano}} <strong>Copo(s) Americano(s)</strong>{{complementoCopo}}.</p>
-<p v-if="Uquilos > 0">{{Uquilos}} <strong>Quilo(s)</strong>.</p>
-<p v-if="Umililitros > 0">{{Umililitros}} <strong>Mililitros (ML)</strong>.</p>
-<p v-if="Ulitros > 0">{{Ulitros}} <strong>Litro(s)</strong>.</p> 
-</div><br><br><br>
-<!-- textos -->
-<p class="parag listas" v-if="ingredienteAtivo == 'Açúcar Cristal'">
-- Uma <strong>colher de sopa</strong> comporta aproximadamente <strong>17g</strong> de açúcar.<br>
-- Uma <strong>colher de sobremesa</strong> comporta aproximadamente <strong>11g</strong> de açúcar.<br>
-- Uma <strong>colher de chá</strong> comporta aproximadamente <strong>6g</strong> de açúcar.<br>
-- Uma <strong>colher de café</strong> comporta aproximadamente <strong>3g</strong> de açúcar.<br>
-- Uma <strong>xícara de chá</strong> comporta aproximadamente <strong>175g</strong> de açúcar.<br>
-- Um <strong>copo americano</strong> comporta aproximadamente <strong>140g</strong> de açúcar.
-</p>
-<p class="parag listas" v-if="ingredienteAtivo == 'Carne Moída'">
-    - Uma <strong>colher de sopa</strong> comporta aproximadamente <strong>24g</strong> de carne moída.<br>
-    - Uma <strong>xícara de chá</strong> comporta aproximadamente <strong>172g</strong> de carne moída.<br>
-    - Um <strong>copo americano</strong> comporta aproximadamente <strong>138g</strong> de carne moída.
-    </p>
-<p class="parag listas" v-if="ingredienteAtivo == 'Arroz Cru'">
-- Uma <strong>xícara de chá</strong> comporta aproximadamente <strong>210g</strong> de arroz cru.<br>
-- Um <strong>copo americano</strong> comporta aproximadamente <strong>180g</strong> de arroz cru.
-</p>
-<p class="parag listas" v-if="ingredienteAtivo == 'Farinha de Trigo'">
-    - Uma <strong>colher de sopa</strong> comporta aproximadamente <strong>14g</strong> de farinha de trigo.<br>
-    - Uma <strong>xícara de chá</strong> comporta aproximadamente <strong>140g</strong> de farinha de trigo.<br>
-    - Um <strong>copo americano</strong> comporta aproximadamente <strong>115g</strong> de farinha de trigo.
-</p>
-<p class="parag listas" v-if="ingredienteAtivo == 'Feijão Cru'">
-    - Uma <strong>xícara de chá</strong> comporta aproximadamente <strong>250g</strong> de feijão cru.<br>
-    - Um <strong>copo americano</strong> comporta aproximadamente <strong>170g</strong> de feijão cru.
-</p>
-<p class="parag listas" v-if="ingredienteAtivo == 'Frango Desfiado'">
-    - Uma <strong>colher de sopa</strong> comporta aproximadamente <strong>18g</strong> de frango desfiado.<br>
-    - Uma <strong>xícara de chá</strong> comporta aproximadamente <strong>128g</strong> de frango desfiado.
-</p>
-<p class="parag listas" v-if="ingredienteAtivo == 'Líquidos' || ingredienteAtivo == 'Mel'">
-    - Uma <strong>colher de sopa</strong> comporta aproximadamente <strong>15ml</strong><span v-if="ingredienteAtivo == 'Mel'">(18g) de mel</span>.<br>
-    - Uma <strong>colher de sobremesa</strong> comporta aproximadamente <strong>10ml</strong><span v-if="ingredienteAtivo == 'Mel'">(12g) de mel</span>.<br>
-    - Uma <strong>colher de chá</strong> comporta aproximadamente <strong>5ml</strong><span v-if="ingredienteAtivo == 'Mel'">(6g) de mel</span>.<br>
-    - Uma <strong>colher de café</strong> comporta aproximadamente <strong>2.5ml</strong><span v-if="ingredienteAtivo == 'Mel'">(3g) de mel</span>.<br>
-    - Uma <strong>xícara de chá</strong> comporta aproximadamente <strong>240ml</strong><span v-if="ingredienteAtivo == 'Mel'">(300g) de mel</span>.<br>
-    - Um <strong>copo americano</strong> comporta aproximadamente <strong>190ml</strong><span v-if="ingredienteAtivo == 'Mel'">(237g) de mel</span>.<br>
-</p>
-<p class="parag listas" v-if="ingredienteAtivo == 'Manteiga'">
-    - Uma <strong>colher de sopa</strong> comporta aproximadamente <strong>18g</strong> de manteiga.<br>
-    - Uma <strong>colher de sobremesa</strong> comporta aproximadamente <strong>12g</strong> de manteiga.<br>
-    - Uma <strong>colher de chá</strong> comporta aproximadamente <strong>6g</strong> de manteiga.<br>
-    - Uma <strong>colher de café</strong> comporta aproximadamente <strong>3g</strong> de manteiga.
-</p>
-<p class="parag listas" v-if="ingredienteAtivo == 'Pó de Café'">
-    - Uma <strong>colher de sopa</strong> comporta aproximadamente <strong>9g</strong> de pó de café.<br>
-    - Uma <strong>colher de sobremesa</strong> comporta aproximadamente <strong>6g</strong> de pó de café.<br>
-    - Uma <strong>colher de chá</strong> comporta aproximadamente <strong>3g</strong> de pó de café.<br>
-    - Uma <strong>xícara de chá</strong> comporta aproximadamente <strong>90g</strong> de pó de café.<br>
-    - Um <strong>copo americano</strong> comporta aproximadamente <strong>60g</strong> de pó de café.
-</p>
-<p class="parag listas" v-if="ingredienteAtivo == 'Sal'">
-    - Uma <strong>colher de sopa</strong> comporta aproximadamente <strong>18g</strong> de sal.<br>
-    - Uma <strong>colher de sobremesa</strong> comporta aproximadamente <strong>12g</strong> de sal.<br>
-    - Uma <strong>colher de chá</strong> comporta aproximadamente <strong>6g</strong> de sal.<br>
-    - Uma <strong>colher de café</strong> comporta aproximadamente <strong>3g</strong> de sal.
-</p>
-<p class="parag parag-none" v-if="medidaAtiva == 'Colher(es) de Sopa' || medidaAtiva == 'Colher(es) de Sobremesa' || medidaAtiva == 'Colher(es) de Chá' || medidaAtiva == 'Colher(es) de Café' || medidaAtiva == 'Xícara(s) de Chá' || medidaAtiva == 'Copo(s) Americano(s)'">
-*Os valores <span v-if="medidaAtiva == 'Copo(s) Americano(s)'">dos</span><span v-else>das</span> {{medidaAtiva}} podem variar.</p>
-<!-- Tabela -->
-<main class="main content">
-<h2>Tabela de Ingredientes Comuns: Medidas de Copos e Colheres<span style="display:none">Convertidas</span></h2>
-<table>
-<thead>
-<tr><th>Medida</th><th>Ingrediente</th><th>Quantidade</th></tr>
-</thead>
-<tbody>
-<tr><td rowspan="8" title="Xícara de Chá"><img src="https://mesadochef.com.br/wp-content/uploads/2023/07/xicara-de-cha.webp" alt="Xícara de chá para saber as medidas em gramas e mililitros na cozinha." title="Xícara de Chá" class="xicaracha"><p>Xícara de Chá</p></td><td>Açúcar Cristal</td><td><p>175g</p></td></tr>
-<tr><td>Arroz Cru</td><td>210g</td></tr>
-<tr><td>Farinha de Trigo</td><td>140g</td></tr>
-<tr><td>Feijão Cru</td><td>250g</td></tr>
-<tr><td>Frango Desfiado</td><td>128g</td></tr>
-<tr><td class="gray">Líquido(s)</td><td class="gray">240ml</td></tr>
-<tr><td>Mel</td><td>300g</td></tr>
-<tr><td>Pó de Café</td><td>90g</td></tr>
-<tr class="espaco"></tr>
-<tr class="darkyellow titulo"><th>Medida</th><th>Ingrediente</th><th>Quantidade</th></tr>
-<tr class="darkyellow" title="Colher de Sopa"><td rowspan="8" title="Colher de Sopa"><img src="https://mesadochef.com.br/wp-content/uploads/2023/07/colher-de-sopa.webp" alt="Colher de Sopa para medidas culinárias." title="Colher de Sopa"><p>Colher de Sopa</p></td><td>Açúcar Cristal</td><td>17.5g</td></tr>
-<tr class="darkyellow"><td>Farinha de Trigo</td><td>14g</td></tr>
-<tr class="darkyellow"><td>Frango Desfiado</td><td>18g</td></tr>
-<tr class="darkyellow"><td class="gray">Líquido(s)</td><td class="gray">15ml</td></tr>
-<tr class="darkyellow"><td>Manteiga</td><td>18g</td></tr>
-<tr class="darkyellow"><td>Mel</td><td>18.8g</td></tr>
-<tr class="darkyellow"><td>Pó de Café</td><td>9g</td></tr>
-<tr class="darkyellow"><td>Sal Comum</td><td>18g</td></tr>
-<tr class="espaco"></tr>
-<tr class="titulo"><th>Medida</th><th>Ingrediente</th><th>Quantidade</th></tr>
-<tr><td rowspan="8" title="Colher de Sobremesa"><img src="https://mesadochef.com.br/wp-content/uploads/2023/07/colher-de-sobremesa.webp" alt="Colher de sobremesa para medidas na cozinha." title="Colher de Sobremesa"><p>Colher de Sobremesa</p></td><td>Açúcar Cristal</td><td>11.7g</td></tr>
-<tr><td>Farinha de Trigo</td><td>9.3g</td></tr>
-<tr><td>Frango Desfiado</td><td>12g</td></tr>
-<tr><td class="gray">Líquido(s)</td><td class="gray">10ml</td></tr>
-<tr><td>Manteiga</td><td>12g</td></tr>
-<tr><td>Mel</td><td>12.5g</td></tr>
-<tr><td>Pó de Café</td><td>6g</td></tr>
-<tr><td>Sal Comum</td><td>12g</td></tr>
-
-<tr class="espaco"></tr>
-<tr class="darkyellow titulo"><th>Medida</th><th>Ingrediente</th><th>Quantidade</th></tr>
-<tr title="Colher de Chá" class="darkyellow"><td rowspan="6"><img src="https://mesadochef.com.br/wp-content/uploads/2023/07/colher-de-cafe.webp" alt="Colher de Chá para medir ingredientes na cozinha." title="Colher de Chá"><p>Colher de Chá</p></td><td>Açúcar Cristal</td><td>5.8g</td></tr>
-<tr class="darkyellow"><td>Farinha de Trigo</td><td>4.6g</td></tr>
-<tr class="darkyellow"><td class="gray">Líquido(s)</td><td class="gray">5ml</td></tr>
-<tr class="darkyellow"><td>Manteiga</td><td>6g</td></tr>
-<tr class="darkyellow"><td>Pó de Café</td><td>3g</td></tr>
-<tr class="darkyellow"><td>Sal Comum</td><td>6g</td></tr>
-<tr class="espaco"></tr>
-<tr class="titulo"><th>Medida</th><th>Ingrediente</th><th>Quantidade</th></tr>
-<tr><td title="Colher de Café" rowspan="6"><img src="https://mesadochef.com.br/wp-content/uploads/2023/07/colher-de-cha.webp" alt="Colher de Café para Medidas de Culinárias." title="Colher de Café"><p>Colher de Café</p></td><td>Açúcar Cristal</td><td>2.9g</td></tr>
-<tr><td>Farinha de Trigo</td><td>2.3g</td></tr>
-<tr><td>Líquido(s)</td><td>2.5ml</td></tr>
-<tr><td>Mel</td><td>3.1g</td></tr>
-<tr><td>Pó de Café</td><td>1.5g</td></tr>
-<tr><td>Sal Comum</td><td>3g</td></tr>
-<tr class="espaco"></tr>
-<tr class="darkyellow titulo"><th>Medida</th><th>Ingrediente</th><th>Quantidade</th></tr>
-<tr class="darkyellow"><td title="Copo Americano" rowspan="9"><img src="https://mesadochef.com.br/wp-content/uploads/2023/07/copo-americano.webp" alt="Copo Americano de bar para medir ingredientes culinários." title="Copo Americano"><p>Copo Americano</p></td><td>Açúcar Cristal</td><td>140g</td></tr>
-<tr class="darkyellow"><td>Arroz Cru</td><td>180g</td></tr>
-<tr class="darkyellow"><td>Farinha de Trigo</td><td>115g</td></tr>
-<tr class="darkyellow"><td>Feijão Cru</td><td>170g</td></tr>
-<tr class="darkyellow"><td>Frango Desfiado</td><td>105g</td></tr>
-<tr class="darkyellow"><td>Líquido(s)</td><td>190ml</td></tr>
-<tr class="darkyellow"><td>Mel</td><td>237.5g</td></tr>
-<tr class="darkyellow"><td>Pó de Café</td><td>60g</td></tr>
-<tr class="darkyellow"><td>Sal Comum</td><td>260g</td></tr>
-<!--
-<tr title="Mililitros (ML)"><td><img src="https://mesadochef.com.br/wp-content/uploads/2023/07/mililitros.webp" alt="Mililitros (MLs) para medidas culinárias." title="Mililitros"><p>Mililitros (ML)</p></td></tr>
-<tr title="Litros"><td><img src="https://mesadochef.com.br/wp-content/uploads/2023/07/litros.webp" alt="Litros - Conversão de medidas para cozinha." title="Litros"><p>Litros</p></td></tr>
-<tr title="Gramas"><td><img src="https://mesadochef.com.br/wp-content/uploads/2023/07/gramas.webp" alt="Saleiro de Sal para medir gramas, receitas." title="Gramas"><p>Gramas</p></td></tr>
-<tr title="Quilos"><td><img src="https://mesadochef.com.br/wp-content/uploads/2023/07/quilos.webp" alt="Peixe Cru. Quilos como medidas para cozinha." title="Quilos"><p>Quilos</p></td></tr>
--->
-</tbody>
-</table>
-</main>
-<div class="tabela-conversao content">
-    <h2>Tabela de Conversão de Medidas (Açúcar Cristal)</h2>
-    <table class="darkyellow">
-        <thead>
-            <tr><th>Medida</th><th>Quantidade</th><th>Convertido</th></tr>
-        </thead>
-        <tbody>
-            <tr><td>1 xícara (chá)</td><td>175g</td><td>10 colheres (sopa).</td></tr>
-            <tr><td>1 1/2 xícara (chá)</td><td>262.5g</td><td>15 colheres (sopa)</td></tr>
-            <tr><td>1/2 xícara (chá)</td><td>87.5g</td><td>5 colheres (sopa).</td></tr>
-            <tr><td>1/3 xícara (chá)</td><td>43,75g</td><td>2 colheres (sopa) + 1 colher (chá).</td></tr>
-            <tr><td>1/4 xícara (chá)</td><td>21,87g</td><td>1 colher (sopa) + 1 colher (café).</td></tr>
-        </tbody>
-    </table>
-</div>
-<div class="tabela-conversao content">
-    <h2>Tabela de Conversão de Medidas (Farinha de Trigo)</h2>
-    <table class="darkyellow">
-        <thead>
-            <tr><th>Medida</th><th>Quantidade</th><th>Convertido</th></tr>
-        </thead>
-        <tbody>
-            <tr><td>1 xícara (chá)</td><td>140g</td><td>10 colheres (sopa).</td></tr>
-            <tr><td>1 1/2 xícara (chá)</td><td>210g</td><td>15 colheres (sopa).</td></tr>
-            <tr><td>1/2 xícara (chá)</td><td>70g</td><td>5 colheres (sopa).</td></tr>
-            <tr><td>1/3 xícara (chá)</td><td>46.66g</td><td>3 colheres (sopa) + 1 colher (café).</td></tr>
-            <tr><td>1/4 xícara (chá)</td><td>35g</td><td>2 colheres (sopa) + 1 colher (chá).</td></tr>
-        </tbody>
-    </table>
-</div>
-<div class="tabela-conversao content">
-    <h2>Tabela de Conversão de Medidas (Líquidos)</h2>
-    <table class="darkyellow">
-        <thead>
-            <tr><th>Medida</th><th>Quantidade</th><th>Convertido</th></tr>
-        </thead>
-        <tbody>
-            <tr><td>1 xícara (chá)</td><td>240ml</td><td>1 copo americano + 3 colheres (sopa) + 1 colher (chá)<br>ou 16 colheres (sopa).</td></tr>
-            <tr><td>1 1/2 xícara (chá)</td><td>360ml</td><td>1 1/2 copo americano + 6 colheres (sopa) ou 24 colheres (sopa)</td></tr>
-            <tr><td>1/2 xícara (chá)</td><td>120ml</td><td>7 colheres (sopa) + 1 colher (chá).</td></tr>
-            <tr><td>1/3 xícara (chá)</td><td>80ml</td><td>5 colheres (sopa).</td></tr>
-            <tr><td>1/4 xícara (chá)</td><td>60ml</td><td>3 colheres (sopa) + 1 colher (sobremesa).</td></tr>
-        </tbody>
-    </table>
-</div>
-<div class="tabela-fracionaria content">
-<h2>Tabela Fracionária</h2>
-<table>
-    <thead>
-        <tr><th>Valor Fracionário</th><th>Valor Decimal</th></tr>
-    </thead>
-    <tbody>
-        <tr><td>1/4 (Um Quarto)</td><td>0.2</td></tr>
-        <tr><td>1/3 (Um Terço)</td><td>0.3</td></tr>
-        <tr><td>1/2 (Meio)</td><td>0.5</td></tr>
-        <tr><td>1 1/2 (Um e Meio)</td><td>1.5</td></tr>
-        <tr><td>2 1/2 (Dois e Meio)</td><td>2.5</td></tr>
-        <tr><td>2/3</td><td>0.6</td></tr>
-    </tbody>
-</table>
-</div>
-<img src="./assets/images/measures.webp" alt="Infográfico Medidas Conversor de Medidas Culinárias" style="width: 100%">
-<div class="info content resultado">
-<h2>Um pouco mais sobre o conversor de medidas<span style="display: none"> culinárias</span></h2>
-<p>Para medir as quantidades corretas, utilizamos balanças de cozinha e medidores comuns. Quando calculamos a quantidade de uma colher (sopa), pesamos algumas vezes uma colher rasa e uma colher cheia. Em média, uma colher (sopa) de açúcar tem cerca de 17,5 gramas, considerando que uma colher cheia cabe aproximadamente 19 gramas e uma colher rasa 13 gramas na maioria dos testes realizados.</p>
-<p>Também buscamos informações confiáveis na internet e testamos em casa usando uma balança de cozinha e utensílios como xícaras padrão de 240ml, colheres de sopa, café, sobremesa, chá e copos americanos tradicionais de bar. Combinando todas essas abordagens, temos confiança de que os valores fornecidos em nosso conversor online são precisos para ajudar qualquer pessoa que precise de medidas para receitas e culinária em geral.</p>
-</div>
-<!-- Conversor Culinário de Temperatura -->
-<p class="cta">Conheça também o nosso <a href="./conversor-culinario-de-temperatura.html">Conversor de Temperatura</a>.</p>
-<div class="palavras-chave content">
-    <span>Palavras-Chave:</span> Conversor de medidas para cozinha, conversor de medidas culinárias, converter gramas para xícaras, converter gramas para colheres, converter ml para colheres de sopa, conversor culinário, conversor de medidas, tabela conversão de medidas, conversor de medidas de peso, transformar xícaras em colheres de sopa, conversão online de medidas de colher para cozinha, mesa do chef.
-</div>
-</section>
-</div>
-<!-- footer -->
-<footer class="content">
-<div class="container">
-    <p>2023. MESA DO CHEF. SITE DE RECEITAS ONLINE.</p>
-    <a href="https://mesadochef.com.br/termos-e-condicoes/">Termos & Condições</a>
-</div>
-</footer>
-</div>
-</body>
+    </body>
 </html>
