@@ -22,1053 +22,211 @@ const vm = new Vue({
         Ulitros: 0,
         multiplicador: 1,
         inputvalue: 1,
+        // ingredientes & medidas
+        valoresConversao: {
+            "Líquidos": {
+                "Xícara(s) de Chá":
+                    { xicaraCha: 0, colherSopa: 16, colherCha: 48, colherSobremesa: 24, colherCafe: 96, copoAmericano: 1.25, Ugramas: 240, Uquilos: 0.24, Umililitros: 240, Ulitros: 0.24 },
+                "Copo(s) Americano(s)":
+                    { xicaraCha: 0.8, colherSopa: 12.66, colherCha: 38, colherSobremesa: 19, colherCafe: 76, copoAmericano: 0, Ugramas: 190, Uquilos: 0.19, Umililitros: 190, Ulitros: 0.19 },
+                "Colher(es) de Sopa":
+                    { xicaraCha: 0.064, colherSopa: 0, colherCha: 1.5, colherSobremesa: 3, colherCafe: 6, copoAmericano: 0.08, Ugramas: 15, Uquilos: 0, Umililitros: 15, Ulitros: 0 },
+                "Colher(es) de Sobremesa":
+                    { xicaraCha: 0.042, colherSopa: 0.66, colherCha: 2, colherSobremesa: 0, colherCafe: 4, copoAmericano: 0.05, Ugramas: 10, Uquilos: 0, Umililitros: 10, Ulitros: 0 },
+                "Colher(es) de Chá":
+                    { xicaraCha: 0, colherSopa: 0, colherCha: 2, colherSobremesa: 0.5, colherCafe: 2, copoAmericano: 0, Ugramas: 5, Uquilos: 0, Umililitros: 5, Ulitros: 0 },
+                "Colher(es) de Café":
+                    { xicaraCha: 0, colherSopa: 0.165, colherCha: 2, colherSobremesa: 0.25, colherCafe: 0, copoAmericano: 0, Ugramas: 2.5, Uquilos: 0, Umililitros: 2.5, Ulitros: 0 },
+                "Mililitros (ML)":
+                    { xicaraCha: 0.00417, colherSopa: 0.0667, colherCha: 0.2 , colherSobremesa: 0.1, colherCafe: 0.4 , copoAmericano: 0.0053, Ugramas: 1, Uquilos: 0.001, Umililitros: 1, Ulitros: 0.001 },
+                "Litro(s)": 
+                    { xicaraCha: 4.16667, colherSopa: 66.6667, colherCha: 200, colherSobremesa: 100, colherCafe: 400, copoAmericano: 5.263, Ugramas: 1000, Uquilos: 1, Umililitros: 1000, Ulitros: 0 }
+            },
+            "Açúcar Cristal": {
+                "Xícara(s) de Chá": { xicaraCha: 0, colherSopa: 10, colherCha: 29.16, colherSobremesa: 14.58, colherCafe: 58.32, copoAmericano: 1.25, Ugramas: 175, Uquilos: 0.175, Umililitros: 0, Ulitros: 0 },
+                "Copo(s) Americano(s)": { xicaraCha: 0.8, colherSopa: 8, colherCha: 24.01, colherSobremesa: 12, colherCafe: 48.03, copoAmericano: 0, Ugramas: 140, Uquilos: 0.14, Umililitros: 0, Ulitros: 0 },
+                "Colher(es) de Sopa": { xicaraCha: 0.1, colherSopa: 0, colherCha: 3, colherSobremesa: 1.5, colherCafe: 6, copoAmericano: 0.12, Ugramas: 17.5, Uquilos: 0, Umililitros: 0, Ulitros: 0 },
+                "Colher(es) de Sobremesa": { xicaraCha: 0.066, colherSopa: 0.66, colherCha: 2, colherSobremesa: 0, colherCafe: 4, copoAmericano: 0.069, Ugramas: 11.66, Uquilos: 0, Umililitros: 0, Ulitros: 0 },
+                "Colher(es) de Chá": { xicaraCha: 0, colherSopa: 0.33, colherCha: 0, colherSobremesa: 0.5, colherCafe: 2, copoAmericano: 0, Ugramas: 5.83, Uquilos: 0, Umililitros: 0, Ulitros: 0 },
+                "Colher(es) de Café": { xicaraCha: 0, colherSopa: 0.165, colherCha: 0.5, colherSobremesa: 0.25, colherCafe: 0, copoAmericano: 0, Ugramas: 2.92, Uquilos: 0, Umililitros: 0, Ulitros: 0 },
+                "Gramas": { xicaraCha: 0.0057, colherSopa: 0.0571, colherCha: 0.1715, colherSobremesa: 0.0858, colherCafe: 0.3431, copoAmericano: 0.0071, Ugramas: 0, Uquilos: 0.001, Umililitros: 0, Ulitros: 0 },
+                "Quilo(s)": { xicaraCha: 5.71, colherSopa: 57.14, colherCha: 171.53, colherSobremesa: 85.76, colherCafe: 343.05, copoAmericano: 7.14, Ugramas: 1000, Uquilos: 0, Umililitros: 0, Ulitros: 0 }
+            },
+            "Arroz Cru": {
+                "Xícara(s) de Chá": { xicaraCha: 0, colherSopa: 16.15, colherCha: 48.46, colherSobremesa: 24.23, colherCafe: 96.92, copoAmericano: 1.25, Ugramas: 210, Uquilos: 0.21, Umililitros: 0, Ulitros: 0 },
+                "Copo(s) Americano(s)": { xicaraCha: 0.8, colherSopa: 12.92, colherCha: 38.46, colherSobremesa: 19.23, colherCafe: 76.92, copoAmericano: 0, Ugramas: 168, Uquilos: 0.168, Umililitros: 0, Ulitros: 0 },
+                "Colher(es) de Sopa": { xicaraCha: 0.062, colherSopa: 0, colherCha: 3, colherSobremesa: 1.5, colherCafe: 6, copoAmericano: 0.077, Ugramas: 13, Uquilos: 0, Umililitros: 0, Ulitros: 0 },
+                "Colher(es) de Sobremesa": { xicaraCha: 0.041, colherSopa: 0.666, colherCha: 2, colherSobremesa: 0, colherCafe: 4, copoAmericano: 0.051, Ugramas: 8.67, Uquilos: 0, Umililitros: 0, Ulitros: 0 },
+                "Colher(es) de Chá": { xicaraCha: 0.020, colherSopa: 0.333, colherCha: 0, colherSobremesa: 0.5, colherCafe: 2, copoAmericano: 0.026, Ugramas: 4.33, Uquilos: 0, Umililitros: 0, Ulitros: 0 },
+                "Colher(es) de Café": { xicaraCha: 0.010, colherSopa: 0.166, colherCha: 0.5, colherSobremesa: 0.25, colherCafe: 0, copoAmericano: 0.013, Ugramas: 2.17, Uquilos: 0, Umililitros: 0, Ulitros: 0 },
+                "Gramas": { xicaraCha: 0.0048, colherSopa: 0.0769, colherCha: 0.2308, colherSobremesa: 0.1154, colherCafe: 0.4615, copoAmericano: 0.00595, Ugramas: 0, Uquilos: 0.001, Umililitros: 0, Ulitros: 0 },
+                "Quilo(s)": { xicaraCha: 4.76, colherSopa: 76.92, colherCha: 230.77, colherSobremesa: 115.38, colherCafe: 461.54, copoAmericano: 5.95, Ugramas: 1000, Uquilos: 0, Umililitros: 0, Ulitros: 0 }
+            },
+            "Sal": {
+                "Xícara(s) de Chá": { xicaraCha: 0, colherSopa: 18.35, colherCha: 55.05, colherSobremesa: 27.52, colherCafe: 110.1, copoAmericano: 1.25, Ugramas: 180, Uquilos: 0.18, Umililitros: 0, Ulitros: 0 },
+                "Copo(s) Americano(s)": { xicaraCha: 0.8, colherSopa: 14.68, colherCha: 44.04, colherSobremesa: 22.02, colherCafe: 88.08, copoAmericano: 0, Ugramas: 144, Uquilos: 0.144, Umililitros: 0, Ulitros: 0 },
+                "Colher(es) de Sopa": { xicaraCha: 0.0545, colherSopa: 0, colherCha: 3, colherSobremesa: 1.5, colherCafe: 6, copoAmericano: 0, Ugramas: 18, Uquilos: 0, Umililitros: 0, Ulitros: 0 },
+                "Colher(es) de Sobremesa": { xicaraCha: 0.0364, colherSopa: 0.666, colherCha: 2, colherSobremesa: 0, colherCafe: 4, copoAmericano: 0, Ugramas: 12, Uquilos: 0, Umililitros: 0, Ulitros: 0 },
+                "Colher(es) de Chá": { xicaraCha: 0, colherSopa: 0.3333, colherCha: 0, colherSobremesa: 0.5, colherCafe: 2, copoAmericano: 0, Ugramas: 6, Uquilos: 0, Umililitros: 0, Ulitros: 0 },
+                "Colher(es) de Café": { xicaraCha: 0, colherSopa: 0.165, colherCha: 0.5, colherSobremesa: 0.25, colherCafe: 0, copoAmericano: 0, Ugramas: 3, Uquilos: 0, Umililitros: 0, Ulitros: 0 },
+                "Gramas": { xicaraCha: 0.00303, colherSopa: 0.0556, colherCha: 0.1667, colherSobremesa: 0.0833, colherCafe: 0.3333, copoAmericano: 0.0037, Ugramas: 0, Uquilos: 0.001, Umililitros: 0, Ulitros: 0 },
+                "Quilo(s)": { xicaraCha: 3.03, colherSopa: 55.56, colherCha: 166.67, colherSobremesa: 83.33, colherCafe: 333.33, copoAmericano: 3.7, Ugramas: 1000, Uquilos: 0, Umililitros: 0, Ulitros: 0 }
+            },
+            "Mel": {
+                "Xícara(s) de Chá": { xicaraCha: 0, colherSopa: 16, colherCha: 48, colherSobremesa: 24, colherCafe: 96, copoAmericano: 1.25, Ugramas: 280, Uquilos: 0.28, Umililitros: 280, Ulitros: 0.28 },
+                "Copo(s) Americano(s)": { xicaraCha: 0.8, colherSopa: 12.8, colherCha: 38.4, colherSobremesa: 19.2, colherCafe: 76.8, copoAmericano: 0, Ugramas: 224, Uquilos: 0.224, Umililitros: 224, Ulitros: 0.224 },
+                "Colher(es) de Sopa": { xicaraCha: 0.0625, colherSopa: 0, colherCha: 3, colherSobremesa: 1.5, colherCafe: 6, copoAmericano: 0.078, Ugramas: 17.5, Uquilos: 0.0175, Umililitros: 17.5, Ulitros: 0.0175 },
+                "Colher(es) de Sobremesa": { xicaraCha: 0.0417, colherSopa: 0.666, colherCha: 2, colherSobremesa: 0, colherCafe: 4, copoAmericano: 0.052, Ugramas: 11.67, Uquilos: 0.01167, Umililitros: 11.67, Ulitros: 0.01167 },
+                "Colher(es) de Chá": { xicaraCha: 0.0208, colherSopa: 0.333, colherCha: 0, colherSobremesa: 0.5, colherCafe: 2, copoAmericano: 0.026, Ugramas: 5.83, Uquilos: 0.00583, Umililitros: 5.83, Ulitros: 0.00583 },
+                "Colher(es) de Café": { xicaraCha: 0.0104, colherSopa: 0.166, colherCha: 0.5, colherSobremesa: 0.25, colherCafe: 0, copoAmericano: 0.013, Ugramas: 2.92, Uquilos: 0.00292, Umililitros: 2.92, Ulitros: 0.00292 },
+                "Gramas": { xicaraCha: 0.00357, colherSopa: 0.057, colherCha: 0.172, colherSobremesa: 0.086, colherCafe: 0.343, copoAmericano: 0.00446, Ugramas: 0, Uquilos: 0.001, Umililitros: 1, Ulitros: 0.001 },
+                "Quilo(s)": { xicaraCha: 3.57, colherSopa: 57.14, colherCha: 171.43, colherSobremesa: 85.71, colherCafe: 342.86, copoAmericano: 4.46, Ugramas: 1000, Uquilos: 0, Umililitros: 1000, Ulitros: 1 },
+                "Mililitros (ML)": {},
+                "Litro(s)": {}
+            },
+            "Pó de Café": {
+                "Xícara(s) de Chá": { xicaraCha: 0, colherSopa: 10, colherCha: 29.16, colherSobremesa: 14.58, colherCafe: 58.32, copoAmericano: 1.25, Ugramas: 90, Uquilos: 0.09, Umililitros: 0, Ulitros: 0 },
+                "Copo(s) Americano(s)": { xicaraCha: 0.8, colherSopa: 6.67, colherCha: 20, colherSobremesa: 10, colherCafe: 40, copoAmericano: 0, Ugramas: 60, Uquilos: 0.06, Umililitros: 0, Ulitros: 0 },
+                "Colher(es) de Sopa": { xicaraCha: 0.1, colherSopa: 0, colherCha: 3, colherSobremesa: 1.5, colherCafe: 6, copoAmericano: 0.15, Ugramas: 9, Uquilos: 0, Umililitros: 0, Ulitros: 0 },
+                "Colher(es) de Sobremesa": { xicaraCha: 0.0667, colherSopa: 0.67, colherCha: 2, colherSobremesa: 0, colherCafe: 4, copoAmericano: 0.1, Ugramas: 6, Uquilos: 0, Umililitros: 0, Ulitros: 0 },
+                "Colher(es) de Chá": { xicaraCha: 0, colherSopa: 0.33, colherCha: 0, colherSobremesa: 0.5, colherCafe: 2, copoAmericano: 0, Ugramas: 3, Uquilos: 0, Umililitros: 0, Ulitros: 0 },
+                "Colher(es) de Café": { xicaraCha: 0, colherSopa: 0.17, colherCha: 0.5, colherSobremesa: 0.25, colherCafe: 0, copoAmericano: 0, Ugramas: 1.5, Uquilos: 0, Umililitros: 0, Ulitros: 0 },
+                "Gramas": { xicaraCha: 0.0111, colherSopa: 0.1111, colherCha: 0.3333, colherSobremesa: 0.1667, colherCafe: 0.6667, copoAmericano: 0.0167, Ugramas: 0, Uquilos: 0.001, Umililitros: 0, Ulitros: 0 },
+                "Quilo(s)": { xicaraCha: 11.11, colherSopa: 111.11, colherCha: 333.33, colherSobremesa: 166.67, colherCafe: 666.67, copoAmericano: 16.67, Ugramas: 1000, Uquilos: 0, Umililitros: 0, Ulitros: 0 }
+            },
+            "Farinha de Trigo": {
+                "Xícara(s) de Chá": { xicaraCha: 0, colherSopa: 10, colherCha: 28, colherSobremesa: 14, colherCafe: 56, copoAmericano: 1.25, Ugramas: 140, Uquilos: 0.14, Umililitros: 0, Ulitros: 0 },
+                "Copo(s) Americano(s)": { xicaraCha: 0.8, colherSopa: 8.21, colherCha: 24.64, colherSobremesa: 12.32, colherCafe: 49.29, copoAmericano: 0, Ugramas: 115, Uquilos: 0.115, Umililitros: 0, Ulitros: 0 },
+                "Colher(es) de Sopa": { xicaraCha: 0.01, colherSopa: 0, colherCha: 3, colherSobremesa: 1.5, colherCafe: 6, copoAmericano: 0.16, Ugramas: 14, Uquilos: 0, Umililitros: 0, Ulitros: 0 },
+                "Colher(es) de Sobremesa": { xicaraCha: 0.0667, colherSopa: 0.67, colherCha: 2, colherSobremesa: 0, colherCafe: 4, copoAmericano: 0.1, Ugramas: 6, Uquilos: 0, Umililitros: 0, Ulitros: 0 },
+                "Colher(es) de Chá": { xicaraCha: 0, colherSopa: 0.33, colherCha: 0, colherSobremesa: 0.5, colherCafe: 2, copoAmericano: 0, Ugramas: 3, Uquilos: 0, Umililitros: 0, Ulitros: 0 },
+                "Colher(es) de Café": { xicaraCha: 0, colherSopa: 0.17, colherCha: 0.5, colherSobremesa: 0.25, colherCafe: 0, copoAmericano: 0, Ugramas: 1.5, Uquilos: 0, Umililitros: 0, Ulitros: 0 },
+                "Gramas": { xicaraCha: 0.00625, colherSopa: 0.0714, colherCha: 0.2143, colherSobremesa: 0.1071, colherCafe: 0.4286, copoAmericano: 0.0087, Ugramas: 0, Uquilos: 0.001, Umililitros: 0, Ulitros: 0 },
+                "Quilo(s)": { xicaraCha: 6.25, colherSopa: 71.43, colherCha: 214.29, colherSobremesa: 107.14, colherCafe: 428.57, copoAmericano: 8.7, Ugramas: 1000, Uquilos: 0, Umililitros: 0, Ulitros: 0 }
+            },  
+            "Frango Desfiado": {
+                "Xícara(s) de Chá": { xicaraCha: 0, colherSopa: 7.1, colherCha: 0, colherSobremesa: 10.7, colherCafe: 0, copoAmericano: 1.3, Ugramas: 128, Uquilos: 0.128, Umililitros: 0, Ulitros: 0 },
+                "Copo(s) Americano(s)": { xicaraCha: 0.8, colherSopa: 8.4, colherCha: 24.7, colherSobremesa: 12.3, colherCafe: 49.3, copoAmericano: 0, Ugramas: 115, Uquilos: 0.115, Umililitros: 0, Ulitros: 0 },
+                "Colher(es) de Sopa": { xicaraCha: 0.14, colherSopa: 0, colherCha: 0, colherSobremesa: 1.5, colherCafe: 0, copoAmericano: 0.16, Ugramas: 18, Uquilos: 0, Umililitros: 0, Ulitros: 0 },
+                "Colher(es) de Sobremesa": { xicaraCha: 0.067, colherSopa: 0.67, colherCha: 2, colherSobremesa: 0, colherCafe: 4, copoAmericano: 0.1, Ugramas: 6, Uquilos: 0, Umililitros: 0, Ulitros: 0 },
+                "Colher(es) de Chá": { xicaraCha: 0, colherSopa: 0.33, colherCha: 0, colherSobremesa: 0.5, colherCafe: 2, copoAmericano: 0, Ugramas: 3, Uquilos: 0, Umililitros: 0, Ulitros: 0 },
+                "Colher(es) de Café": { xicaraCha: 0, colherSopa: 0.17, colherCha: 0.5, colherSobremesa: 0.25, colherCafe: 0, copoAmericano: 0, Ugramas: 1.5, Uquilos: 0, Umililitros: 0, Ulitros: 0 },
+                "Gramas": { xicaraCha: 0.0078, colherSopa: 0.0556, colherCha: 0.1667, colherSobremesa: 0.0833, colherCafe: 0.3333, copoAmericano: 0.0095, Ugramas: 0, Uquilos: 0.001, Umililitros: 0, Ulitros: 0 },
+                "Quilo(s)": { xicaraCha: 7.8, colherSopa: 55.6, colherCha: 166.7, colherSobremesa: 83.3, colherCafe: 333.3, copoAmericano: 9.5, Ugramas: 1000, Uquilos: 0, Umililitros: 0, Ulitros: 0 }
+            },
+            "Feijão Cru": {
+                "Xícara(s) de Chá": { xicaraCha: 0, colherSopa: 0, colherCha: 0, colherSobremesa: 0, colherCafe: 0, copoAmericano: 1.25, Ugramas: 250, Uquilos: 0.250, Umililitros: 0, Ulitros: 0 },
+                "Copo(s) Americano(s)": { xicaraCha: 0.8, colherSopa: 0, colherCha: 0, colherSobremesa: 0, colherCafe: 0, copoAmericano: 0, Ugramas: 170, Uquilos: 0.170, Umililitros: 0, Ulitros: 0 },
+                "Gramas": { xicaraCha: 0.004, colherSopa: 0.0455, colherCha: 0, colherSobremesa: 0, colherCafe: 0, copoAmericano: 0.0059, Ugramas: 0, Uquilos: 0.001, Umililitros: 0, Ulitros: 0 }
+            },
+           "Manteiga": {
+                "Xícara(s) de Chá": { xicaraCha: 0.1, colherSopa: 0, colherCha: 3, colherSobremesa: 1.5, colherCafe: 6, copoAmericano: 0, Ugramas: 18, Uquilos: 0, Umililitros: 0, Ulitros: 0 },
+                "Colher(es) de Sopa": { xicaraCha: 0, colherSopa: 0.7, colherCha: 2, colherSobremesa: 0, colherCafe: 4, copoAmericano: 0, Ugramas: 12, Uquilos: 0, Umililitros: 0, Ulitros: 0 },
+                "Colher(es) de Sobremesa": { xicaraCha: 0, colherSopa: 0.3, colherCha: 0, colherSobremesa: 0, colherCafe: 2, copoAmericano: 0, Ugramas: 6, Uquilos: 0, Umililitros: 0, Ulitros: 0 },
+                "Colher(es) de Chá": { xicaraCha: 0.004, colherSopa: 0.06, colherCha: 0.17, colherSobremesa: 0.08, colherCafe: 0.33, copoAmericano: 0.005, Ugramas: 0, Uquilos: 0.001, Umililitros: 0, Ulitros: 0 },
+                "Gramas": { xicaraCha: 0.004, colherSopa: 0.06, colherCha: 0.17, colherSobremesa: 0.08, colherCafe: 0.33, copoAmericano: 0.005, Ugramas: 0, Uquilos: 0.001, Umililitros: 0, Ulitros: 0 }
+            },
+            "Carne Moída": {
+                "Xícara(s) de Chá": { xicaraCha: 0, colherSopa: 7.2, colherCha: 21.5, colherSobremesa: 10.8, colherCafe: 43, copoAmericano: 1.3, Ugramas: 172, Uquilos: 0.172, Umililitros: 0, Ulitros: 0 },
+                "Colher(es) de Sopa": { xicaraCha: 0.14, colherSopa: 0, colherCha: 3, colherSobremesa: 1.5, colherCafe: 6, copoAmericano: 0, Ugramas: 24, Uquilos: 0, Umililitros: 0, Ulitros: 0 },
+                "Gramas": { xicaraCha: 0.0058, colherSopa: 0.0417, colherCha: 0.125, colherSobremesa: 0.0625, colherCafe: 0.25, copoAmericano: 0.0072, Ugramas: 0, Uquilos: 0.001, Umililitros: 0, Ulitros: 0 },
+                "Quilo(s)": { xicaraCha: 5.8, colherSopa: 41.7, colherCha: 125, colherSobremesa: 62.5, colherCafe: 250, copoAmericano: 7.2, Ugramas: 1000, Uquilos: 0, Umililitros: 0, Ulitros: 0 },
+                "Copo(s) Americano(s)": { xicaraCha: 0.8, colherSopa: 5.8, colherCha: 17.3, colherSobremesa: 8.6, colherCafe: 34.5, copoAmericano: 0, Ugramas: 138, Uquilos: 0.138, Umililitros: 0, Ulitros: 0 }
+            }
+        },
+        resultados: {
+            xicaraCha: 0,
+            colherSopa: 0,
+            colherCha: 0,
+            colherSobremesa: 0,
+            colherCafe: 0,
+            copoAmericano: 0,
+            Ugramas: 0,
+            Uquilos: 0,
+            Umililitros: 0,
+            Ulitros: 0
+        },
         complementoXicara: '',
         complementoCopo: '',
         complementoColherSobremesa: '',
-        complementoColherSopa: ''
+        complementoColherSopa: '',
     },
     methods: {
         resultFunction() {
+            this.resetComplementos()
+            const conversoes = this.valoresConversao[this.ingredienteAtivo]?.[this.medidaAtiva]
+            if (conversoes) {
+                Object.keys(conversoes).forEach(key => {
+                    if (['Mililitros (ML)', 'Gramas', 'Litro(s)', 'Quilo(s)'].includes(this.medidaAtiva)) {
+                        this[key] = (conversoes[key] * this.inputvalue).toFixed(1)
+                    } else {
+                        this[key] = (conversoes[key] * this.multiplicador).toFixed(1)
+                    }
+                })
+                this.updateComplementos()
+            } else {
+                console.error('Conversões não encontradas para:', this.ingredienteAtivo, this.medidaAtiva)
+            }
+        },
+        updateComplementos() {
+            const xicaraCha = parseFloat(this.xicaraCha)
+            const copoAmericano = parseFloat(this.copoAmericano)
+            const colherSobremesa = parseFloat(this.colherSobremesa)
+            if (xicaraCha > 0.49 && xicaraCha < 0.6) {
+                this.complementoXicara = ' (Meia Xícara)'
+            } else if (xicaraCha > 0.29 && xicaraCha < 0.36) {
+                this.complementoXicara = ' (Um Terço)'
+            }
+            if (copoAmericano > 0.49 && copoAmericano < 0.6) {
+                this.complementoCopo = ' (Meio Copo)'
+            } else if (copoAmericano > 0.29 && copoAmericano < 0.36) {
+                this.complementoCopo = ' (Um Terço)'
+            }
+            if (colherSobremesa === 0.5) {
+                this.complementoColherSobremesa = ' (Meia Colher)'
+            }
+        },
+        resetComplementos() {
             this.complementoCopo = ''
             this.complementoXicara = ''
             this.complementoColherSobremesa = ''
             this.complementoColherSopa = ''
-            if (this.ingredienteAtivo == 'Líquidos' && this.medidaAtiva == 'Xícara(s) de Chá') {
-                this.xicaraCha = (0 * this.multiplicador).toFixed(1)
-                this.colherSopa = (16 * this.multiplicador).toFixed(1)
-                this.colherCha = (48 * this.multiplicador).toFixed(1)
-                this.colherSobremesa = (24 * this.multiplicador).toFixed(1)
-                this.colherCafe = (96 * this.multiplicador).toFixed(1)
-                this.copoAmericano = (1.25 * this.multiplicador).toFixed(1)
-                this.Ugramas = (240 * this.multiplicador).toFixed(1)
-                this.Uquilos = (0.24 * this.multiplicador).toFixed(1)
-                this.Umililitros = (240 * this.multiplicador).toFixed(1)
-                this.Ulitros = (0.24 * this.multiplicador).toFixed(1)
-            }  else if (this.ingredienteAtivo == 'Líquidos' && this.medidaAtiva == 'Copo(s) Americano(s)') {
-                this.xicaraCha = (0.8 * this.multiplicador).toFixed(1)
-                this.colherSopa = (12.66 * this.multiplicador).toFixed(1)
-                this.colherCha = (38 * this.multiplicador).toFixed(1)
-                this.colherSobremesa = (19 * this.multiplicador).toFixed(1)
-                this.colherCafe = (76 * this.multiplicador).toFixed(1)
-                this.copoAmericano = (0 * this.multiplicador).toFixed(1)
-                this.Ugramas = (190 * this.multiplicador).toFixed(1)
-                this.Uquilos = (0.19 * this.multiplicador).toFixed(1)
-                this.Umililitros = (190 * this.multiplicador).toFixed(1)
-                this.Ulitros = (0.19 * this.multiplicador).toFixed(1)
-            } else if (this.ingredienteAtivo == 'Líquidos' && this.medidaAtiva == 'Colher(es) de Sopa') {
-                this.xicaraCha = (0.064 * this.multiplicador).toFixed(1)
-                this.colherSopa = (0 * this.multiplicador).toFixed(1)
-                this.colherCha = (1.5 * this.multiplicador).toFixed(1)
-                this.colherSobremesa = (3 * this.multiplicador).toFixed(1)
-                this.colherCafe = (6 * this.multiplicador).toFixed(1)
-                this.copoAmericano = (0.08 * this.multiplicador).toFixed(1)
-                this.Ugramas = (15 * this.multiplicador).toFixed(1)
-                this.Uquilos = (0 * this.multiplicador).toFixed(1)
-                this.Umililitros = (15 * this.multiplicador).toFixed(1)
-                this.Ulitros = (0 * this.multiplicador).toFixed(1)
-                if (this.xicaraCha > 0.490 && this.xicaraCha < 0.600) {
-                    this.complementoXicara = ' (Meia Xícara)'
-                } else if (this.xicaraCha > 0.290 && this.xicaraCha < 0.360) {
-                    this.complementoXicara = ' (Um Terço)'
-                }
-                if (this.copoAmericano > 0.490 && this.copoAmericano < 0.600) {
-                    this.complementoCopo = ' (Meio Copo)'
-                } else if (this.copoAmericano > 0.290 && this.copoAmericano < 0.360) {
-                    this.complementoCopo = ' (Um Terço)'
-                }
-            } else if (this.ingredienteAtivo == 'Líquidos' && this.medidaAtiva == 'Colher(es) de Sobremesa') {
-                this.xicaraCha = (0.042 * this.multiplicador).toFixed(1)
-                this.colherSopa = (0.66 * this.multiplicador).toFixed(1)
-                this.colherCha = (2 * this.multiplicador).toFixed(1)
-                this.colherSobremesa = (0 * this.multiplicador).toFixed(1)
-                this.colherCafe = (4 * this.multiplicador).toFixed(1)
-                this.copoAmericano = (0.05 * this.multiplicador).toFixed(1)
-                this.Ugramas = (10 * this.multiplicador).toFixed(1)
-                this.Uquilos = (0 * this.multiplicador).toFixed(1)
-                this.Umililitros = (10 * this.multiplicador).toFixed(1)
-                this.Ulitros = (0 * this.multiplicador).toFixed(1)
-            }
-            else if (this.ingredienteAtivo == 'Líquidos' && this.medidaAtiva == 'Colher(es) de Chá') {
-                this.xicaraCha = (0 * this.multiplicador).toFixed(1)
-                this.colherSopa = (0.33 * this.multiplicador).toFixed(1)
-                this.colherCha = (0 * this.multiplicador).toFixed(1)
-                this.colherSobremesa = (0.5 * this.multiplicador).toFixed(1)
-                this.colherCafe = (2 * this.multiplicador).toFixed(1)
-                this.copoAmericano = (0 * this.multiplicador).toFixed(1)
-                this.Ugramas = (5 * this.multiplicador).toFixed(1)
-                this.Uquilos = (0 * this.multiplicador).toFixed(1)
-                this.Umililitros = (5 * this.multiplicador).toFixed(1)
-                this.Ulitros = (0 * this.multiplicador).toFixed(1)
-                if (this.colherSobremesa == 0.5) {
-                    this.complementoColherSobremesa = ' (Meia Colher)'
-                }
-            }
-            else if (this.ingredienteAtivo == 'Líquidos' && this.medidaAtiva == 'Colher(es) de Café') {
-                this.xicaraCha = (0 * this.multiplicador).toFixed(1)
-                this.colherSopa = (0.165 * this.multiplicador).toFixed(1)
-                this.colherCha = (0.5 * this.multiplicador).toFixed(1)
-                this.colherSobremesa = (0.25 * this.multiplicador).toFixed(1)
-                this.colherCafe = (0 * this.multiplicador).toFixed(1)
-                this.copoAmericano = (0 * this.multiplicador).toFixed(1)
-                this.Ugramas = (2.5 * this.multiplicador).toFixed(1)
-                this.Uquilos = (0 * this.multiplicador).toFixed(1)
-                this.Umililitros = (2.5 * this.multiplicador).toFixed(1)
-                this.Ulitros = (0 * this.multiplicador).toFixed(1)
-            } else if (this.ingredienteAtivo == 'Líquidos' && this.medidaAtiva == 'Mililitros (ML)') {
-                this.xicaraCha = (0.00417 * this.inputvalue).toFixed(1)
-                this.colherSopa = (0.0667 * this.inputvalue).toFixed(1)
-                this.colherCha = (0.2 * this.inputvalue).toFixed(1)
-                this.colherSobremesa = (0.1 * this.inputvalue).toFixed(1)
-                this.colherCafe = (0.4 * this.inputvalue).toFixed(1)
-                this.copoAmericano = (0.0053 * this.inputvalue).toFixed(1)
-                this.Ugramas = (1 * this.inputvalue).toFixed(1)
-                this.Uquilos = (0.001 * this.inputvalue).toFixed(1)
-                this.Umililitros = (0 * this.inputvalue).toFixed(1)
-                this.Ulitros = (0.001 * this.inputvalue).toFixed(1)
-                if (this.xicaraCha > 0.490 && this.xicaraCha < 0.600) {
-                    this.complementoXicara = ' (Meia Xícara)'
-                } else if (this.xicaraCha > 0.290 && this.xicaraCha < 0.360) {
-                    this.complementoXicara = ' (Um Terço)'
-                }
-                if (this.copoAmericano > 0.490 && this.copoAmericano < 0.600) {
-                    this.complementoCopo = ' (Meio Copo)'
-                } else if (this.copoAmericano > 0.290 && this.copoAmericano < 0.360) {
-                    this.complementoCopo = ' (Um Terço)'
-                }
-            }
-            else if (this.ingredienteAtivo == 'Líquidos' && this.medidaAtiva == 'Litro(s)') {
-                this.xicaraCha = (4.16667 * this.inputvalue).toFixed(1)
-                this.colherSopa = (66.6667 * this.inputvalue).toFixed(1)
-                this.colherCha = (200 * this.inputvalue).toFixed(1)
-                this.colherSobremesa = (100 * this.inputvalue).toFixed(1)
-                this.colherCafe = (400 * this.inputvalue).toFixed(1)
-                this.copoAmericano = (5.263 * this.inputvalue).toFixed(1)
-                this.Ugramas = (1000 * this.inputvalue).toFixed(1)
-                this.Uquilos = (1 * this.inputvalue).toFixed(1)
-                this.Umililitros = (0 * this.inputvalue).toFixed(1)
-                this.Ulitros = (0 * this.inputvalue).toFixed(1)
-            }
-            else if (this.ingredienteAtivo == 'Açúcar Cristal' && this.medidaAtiva == 'Colher(es) de Sopa') {
-                this.xicaraCha = (0.10 * this.multiplicador).toFixed(1)
-                this.colherSopa = (0 * this.multiplicador).toFixed(1)
-                this.colherCha = (3 * this.multiplicador).toFixed(1)
-                this.colherSobremesa = (1.5 * this.multiplicador).toFixed(1)
-                this.colherCafe = (6 * this.multiplicador).toFixed(1)
-                this.copoAmericano = (0.12 * this.multiplicador).toFixed(1)
-                this.Ugramas = (17.5 * this.multiplicador).toFixed(1)
-                this.Uquilos = (0 * this.multiplicador).toFixed(1)
-                this.Umililitros = (0 * this.multiplicador).toFixed(1)
-                this.Ulitros = (0 * this.multiplicador).toFixed(1)
-                if (this.xicaraCha > 0.490 && this.xicaraCha < 0.600) {
-                    this.complementoXicara = ' (Meia Xícara)'
-                } if (this.colherSobremesa == 1.5) {
-                    this.complementoColherSobremesa = ' (Uma Colher e Meia)'
-                }
-            }
-            else if (this.ingredienteAtivo == 'Açúcar Cristal' && this.medidaAtiva == 'Colher(es) de Sobremesa') {
-                this.xicaraCha = (0.066 * this.multiplicador).toFixed(1)
-                this.colherSopa = (0.66 * this.multiplicador).toFixed(1)
-                this.colherCha = (2 * this.multiplicador).toFixed(1)
-                this.colherSobremesa = (0 * this.multiplicador).toFixed(1)
-                this.colherCafe = (4 * this.multiplicador).toFixed(1)
-                this.copoAmericano = (0.069 * this.multiplicador).toFixed(1)
-                this.Ugramas = (11.66 * this.multiplicador).toFixed(1)
-                this.Uquilos = (0 * this.multiplicador).toFixed(1)
-                this.Umililitros = (0 * this.multiplicador).toFixed(1)
-                this.Ulitros = (0 * this.multiplicador).toFixed(1)
-                if (this.xicaraCha > 0.490 && this.xicaraCha < 0.600) {
-                    this.complementoXicara = ' (Meia Xícara)'
-                }
-            }
-            else if (this.ingredienteAtivo == 'Açúcar Cristal' && this.medidaAtiva == 'Colher(es) de Chá') {
-                this.xicaraCha = (0 * this.multiplicador).toFixed(1)
-                this.colherSopa = (0.333337 * this.multiplicador).toFixed(1)
-                this.colherCha = (0 * this.multiplicador).toFixed(1)
-                this.colherSobremesa = (0.5 * this.multiplicador).toFixed(1)
-                this.colherCafe = (2 * this.multiplicador).toFixed(1)
-                this.copoAmericano = (0 * this.multiplicador).toFixed(1)
-                this.Ugramas = (5.83 * this.multiplicador).toFixed(1)
-                this.Uquilos = (0 * this.multiplicador).toFixed(1)
-                this.Umililitros = (0 * this.multiplicador).toFixed(1)
-                this.Ulitros = (0 * this.multiplicador).toFixed(1)
-                if (this.colherSobremesa == 0.5) {
-                    this.complementoColherSobremesa = ' (Meia Colher)'
-                }
-            } else if (this.ingredienteAtivo == 'Açúcar Cristal' && this.medidaAtiva == 'Colher(es) de Café') {
-                this.xicaraCha = (0 * this.multiplicador).toFixed(1)
-                this.colherSopa = (0.165 * this.multiplicador).toFixed(1)
-                this.colherCha = (0.5 * this.multiplicador).toFixed(1)
-                this.colherSobremesa = (0.25 * this.multiplicador).toFixed(1)
-                this.colherCafe = (0 * this.multiplicador).toFixed(1)
-                this.copoAmericano = (0 * this.multiplicador).toFixed(1)
-                this.Ugramas = (2.915 * this.multiplicador).toFixed(1)
-                this.Uquilos = (0 * this.multiplicador).toFixed(1)
-                this.Umililitros = (0 * this.multiplicador).toFixed(1)
-                this.Ulitros = (0 * this.multiplicador).toFixed(1)
-                if (this.colherSobremesa == 0.5) {
-                    this.complementoColherSobremesa = ' (Meia Colher)'
-                }
-            } else if (this.ingredienteAtivo == 'Açúcar Cristal' && this.medidaAtiva == 'Gramas') {
-                this.xicaraCha = (0.0057142857142858 * this.inputvalue).toFixed(1)
-                this.colherSopa = (0.0571428571428572 * this.inputvalue).toFixed(1)
-                this.colherCha = (0.1715265866209263 * this.inputvalue).toFixed(1)
-                this.colherSobremesa = (0.0857632933104632 * this.inputvalue).toFixed(1)
-                this.colherCafe = (0.3430531732418526 * this.inputvalue).toFixed(1)
-                this.copoAmericano = (0.0071428571428572 * this.inputvalue).toFixed(1)
-                this.Ugramas = (0 * this.inputvalue).toFixed(1)
-                this.Uquilos = (0.001 * this.inputvalue).toFixed(1)
-                this.Umililitros = (0 * this.inputvalue).toFixed(1)
-                this.Ulitros = (0 * this.inputvalue).toFixed(1)
-                if (this.colherSobremesa > 0.490 && this.colherSobremesa < 0.600) {
-                    this.complementoColherSobremesa = ' (Meia Colher)'
-                }
-                if (this.colherSopa > 0.490 && this.colherSopa < 0.600) {
-                    this.complementoColherSopa = ' (Meia Colher)'
-                }
-                if (this.xicaraCha > 0.490 && this.xicaraCha < 0.600) {
-                    this.complementoXicara = ' (Meia Xícara)'
-                } else if (this.xicaraCha > 0.290 && this.xicaraCha < 0.360) {
-                    this.complementoXicara = ' (Um Terço)'
-                }
-                if (this.copoAmericano > 0.490 && this.copoAmericano < 0.600) {
-                    this.complementoCopo = ' (Meio Copo)'
-                } else if (this.copoAmericano > 0.290 && this.copoAmericano < 0.360) {
-                    this.complementoCopo = ' (Um Terço)'
-                }
-            } else if (this.ingredienteAtivo == 'Açúcar Cristal' && this.medidaAtiva == 'Quilo(s)') {
-                this.xicaraCha = (5.714285714285715 * this.inputvalue).toFixed(1)
-                this.colherSopa = (57.14285714285715 * this.inputvalue).toFixed(1)
-                this.colherCha = (171.52658662 * this.inputvalue).toFixed(1)
-                this.colherSobremesa = (85.76329331 * this.inputvalue).toFixed(1)
-                this.colherCafe = (343.05317324 * this.inputvalue).toFixed(1)
-                this.copoAmericano = (7.142857142857144 * this.inputvalue).toFixed(1)
-                this.Ugramas = (1000 * this.inputvalue).toFixed(1)
-                this.Uquilos = (0 * this.inputvalue).toFixed(1)
-                this.Umililitros = (0 * this.inputvalue).toFixed(1)
-                this.Ulitros = (0 * this.inputvalue).toFixed(1)
-                if (this.colherSobremesa == 0.5) {
-                    this.complementoColherSobremesa = ' (Meia Colher)'
-                }
-            } else if (this.ingredienteAtivo == 'Açúcar Cristal' && this.medidaAtiva == 'Xícara(s) de Chá') {
-                this.xicaraCha = (0 * this.multiplicador).toFixed(1)
-                this.colherSopa = (10 * this.multiplicador).toFixed(1)
-                this.colherCha = (29.15951972555746 * this.multiplicador).toFixed(1)
-                this.colherSobremesa = (14.57975986277873 * this.multiplicador).toFixed(1)
-                this.colherCafe = (58.31903945111492 * this.multiplicador).toFixed(1)
-                this.copoAmericano = (1.25 * this.multiplicador).toFixed(1)
-                this.Ugramas = (175 * this.multiplicador).toFixed(1)
-                this.Uquilos = (0.175 * this.multiplicador).toFixed(1)
-                this.Umililitros = (0 * this.multiplicador).toFixed(1)
-                this.Ulitros = (0 * this.multiplicador).toFixed(1)
-                if (this.colherSobremesa == 0.5) {
-                    this.complementoColherSobremesa = ' (Meia Colher)'
-                }
-            } else if (this.ingredienteAtivo == 'Açúcar Cristal' && this.medidaAtiva == 'Copo(s) Americano(s)') {
-                this.xicaraCha = (0.8 * this.multiplicador).toFixed(1)
-                this.colherSopa = (8 * this.multiplicador).toFixed(1)
-                this.colherCha = (24.01372212692967 * this.multiplicador).toFixed(1)
-                this.colherSobremesa = (12.00686106346484 * this.multiplicador).toFixed(1)
-                this.colherCafe = (48.02744425385935 * this.multiplicador).toFixed(1)
-                this.copoAmericano = (0 * this.multiplicador).toFixed(1)
-                this.Ugramas = (140 * this.multiplicador).toFixed(1)
-                this.Uquilos = (0.140 * this.multiplicador).toFixed(1)
-                this.Umililitros = (0 * this.multiplicador).toFixed(1)
-                this.Ulitros = (0 * this.multiplicador).toFixed(1)
-                if (this.colherSobremesa == 0.5) {
-                    this.complementoColherSobremesa = ' (Meia Colher)'
-                }
-            } else if (this.ingredienteAtivo == 'Arroz Cru' && this.medidaAtiva == 'Xícara(s) de Chá') {
-                this.xicaraCha = (0 * this.multiplicador).toFixed(1)
-                this.colherSopa = (16.15384615384615 * this.multiplicador).toFixed(1)
-                this.colherCha = (21.53846153846154 * this.multiplicador).toFixed(1)
-                this.colherSobremesa = (10.76923076923077 * this.multiplicador).toFixed(1)
-                this.colherCafe = (43.07692307692308 * this.multiplicador).toFixed(1)
-                this.copoAmericano = (1.25 * this.multiplicador).toFixed(1)
-                this.Ugramas = (210 * this.multiplicador).toFixed(1)
-                this.Uquilos = (0.210 * this.multiplicador).toFixed(1)
-                this.Umililitros = (0 * this.multiplicador).toFixed(1)
-                this.Ulitros = (0 * this.multiplicador).toFixed(1)
-                if (this.colherSobremesa == 0.5) {
-                    this.complementoColherSobremesa = ' (Meia Colher)'
-                }
-            } else if (this.ingredienteAtivo == 'Arroz Cru' && this.medidaAtiva == 'Copo(s) Americano(s)') {
-                this.xicaraCha = (0.8 * this.multiplicador).toFixed(1)
-                this.colherSopa = (13.84615384615385 * this.multiplicador).toFixed(1)
-                this.colherCha = (18.46153846153847 * this.multiplicador).toFixed(1)
-                this.colherSobremesa = (9.230769230769234 * this.multiplicador).toFixed(1)
-                this.colherCafe = (36.92307692307694 * this.multiplicador).toFixed(1)
-                this.copoAmericano = (0 * this.multiplicador).toFixed(1)
-                this.Ugramas = (180 * this.multiplicador).toFixed(1)
-                this.Uquilos = (0.180 * this.multiplicador).toFixed(1)
-                this.Umililitros = (0 * this.multiplicador).toFixed(1)
-                this.Ulitros = (0 * this.multiplicador).toFixed(1)
-            } else if (this.ingredienteAtivo == 'Arroz Cru' && this.medidaAtiva == 'Gramas') {
-                this.xicaraCha = (0.0047619047619048 * this.inputvalue).toFixed(1)
-                this.colherSopa = (0.0769230769230769 * this.inputvalue).toFixed(1)
-                this.colherCha = (0.23076923076923 * this.inputvalue).toFixed(1)
-                this.colherSobremesa = (0.1153846153846154 * this.inputvalue).toFixed(1)
-                this.colherCafe = (0.46153846153846 * this.inputvalue).toFixed(1)
-                this.copoAmericano = (0.0055555555555556 * this.inputvalue).toFixed(1)
-                this.Ugramas = (0 * this.inputvalue).toFixed(1)
-                this.Uquilos = (0.001 * this.inputvalue).toFixed(1)
-                this.Umililitros = (0 * this.inputvalue).toFixed(1)
-                this.Ulitros = (0 * this.inputvalue).toFixed(1)
-                if (this.colherSobremesa > 0.490 && this.colherSobremesa < 0.600) {
-                    this.complementoColherSobremesa = ' (Meia Colher)'
-                }
-                if (this.colherSopa > 0.490 && this.colherSopa < 0.600) {
-                    this.complementoColherSopa = ' (Meia Colher)'
-                }
-                if (this.xicaraCha > 0.490 && this.xicaraCha < 0.600) {
-                    this.complementoXicara = ' (Meia Xícara)'
-                } else if (this.xicaraCha > 0.290 && this.xicaraCha < 0.360) {
-                    this.complementoXicara = ' (Um Terço)'
-                }
-                if (this.copoAmericano > 0.490 && this.copoAmericano < 0.600) {
-                    this.complementoCopo = ' (Meio Copo)'
-                } else if (this.copoAmericano > 0.290 && this.copoAmericano < 0.360) {
-                    this.complementoCopo = ' (Um Terço)'
-                }
-            } else if (this.ingredienteAtivo == 'Arroz Cru' && this.medidaAtiva == 'Quilo(s)') {
-                this.xicaraCha = (4.7619047619048 * this.inputvalue).toFixed(1)
-                this.colherSopa = (76.9230769230769 * this.inputvalue).toFixed(1)
-                this.colherCha = (230.76923076923 * this.inputvalue).toFixed(1)
-                this.colherSobremesa = (115.3846153846154 * this.inputvalue).toFixed(1)
-                this.colherCafe = (461.53846153846 * this.inputvalue).toFixed(1)
-                this.copoAmericano = (5.5555555555556 * this.inputvalue).toFixed(1)
-                this.Ugramas = (1000 * this.inputvalue).toFixed(1)
-                this.Uquilos = (0 * this.inputvalue).toFixed(1)
-                this.Umililitros = (0 * this.inputvalue).toFixed(1)
-                this.Ulitros = (0 * this.inputvalue).toFixed(1)
-                if (this.colherSobremesa == 0.5) {
-                    this.complementoColherSobremesa = ' (Meia Colher)'
-                }
-            } else if (this.ingredienteAtivo == 'Sal' && this.medidaAtiva == 'Colher(es) de Sopa') {
-                this.xicaraCha = (0.0545454545454545 * this.multiplicador).toFixed(1)
-                this.colherSopa = (0 * this.multiplicador).toFixed(1)
-                this.colherCha = (3 * this.multiplicador).toFixed(1)
-                this.colherSobremesa = (1.5 * this.multiplicador).toFixed(1)
-                this.colherCafe = (6 * this.multiplicador).toFixed(1)
-                this.copoAmericano = (0 * this.multiplicador).toFixed(1)
-                this.Ugramas = (18 * this.multiplicador).toFixed(1)
-                this.Uquilos = (0 * this.multiplicador).toFixed(1)
-                this.Umililitros = (0 * this.multiplicador).toFixed(1)
-                this.Ulitros = (0 * this.multiplicador).toFixed(1)
-                if (this.xicaraCha > 0.490 && this.xicaraCha < 0.600) {
-                    this.complementoXicara = ' (Meia Xícara)'
-                } if (this.colherSobremesa == 1.5) {
-                    this.complementoColherSobremesa = ' (Uma Colher e Meia)'
-                }
-            } else if (this.ingredienteAtivo == 'Sal' && this.medidaAtiva == 'Colher(es) de Sobremesa') {
-                this.xicaraCha = (0.0363636363636364 * this.multiplicador).toFixed(1)
-                this.colherSopa = (0.66 * this.multiplicador).toFixed(1)
-                this.colherCha = (2 * this.multiplicador).toFixed(1)
-                this.colherSobremesa = (0 * this.multiplicador).toFixed(1)
-                this.colherCafe = (4 * this.multiplicador).toFixed(1)
-                this.copoAmericano = (0 * this.multiplicador).toFixed(1)
-                this.Ugramas = (12 * this.multiplicador).toFixed(1)
-                this.Uquilos = (0 * this.multiplicador).toFixed(1)
-                this.Umililitros = (0 * this.multiplicador).toFixed(1)
-                this.Ulitros = (0 * this.multiplicador).toFixed(1)
-                if (this.xicaraCha > 0.490 && this.xicaraCha < 0.600) {
-                    this.complementoXicara = ' (Meia Xícara)'
-                }
-            }  else if (this.ingredienteAtivo == 'Sal' && this.medidaAtiva == 'Colher(es) de Chá') {
-                this.xicaraCha = (0 * this.multiplicador).toFixed(1)
-                this.colherSopa = (0.333337 * this.multiplicador).toFixed(1)
-                this.colherCha = (0 * this.multiplicador).toFixed(1)
-                this.colherSobremesa = (0.5 * this.multiplicador).toFixed(1)
-                this.colherCafe = (2 * this.multiplicador).toFixed(1)
-                this.copoAmericano = (0 * this.multiplicador).toFixed(1)
-                this.Ugramas = (6 * this.multiplicador).toFixed(1)
-                this.Uquilos = (0 * this.multiplicador).toFixed(1)
-                this.Umililitros = (0 * this.multiplicador).toFixed(1)
-                this.Ulitros = (0 * this.multiplicador).toFixed(1)
-                if (this.colherSobremesa == 0.5) {
-                    this.complementoColherSobremesa = ' (Meia Colher)'
-                }
-            } else if (this.ingredienteAtivo == 'Sal' && this.medidaAtiva == 'Colher(es) de Café') {
-                this.xicaraCha = (0 * this.multiplicador).toFixed(1)
-                this.colherSopa = (0.165 * this.multiplicador).toFixed(1)
-                this.colherCha = (0.5 * this.multiplicador).toFixed(1)
-                this.colherSobremesa = (0.25 * this.multiplicador).toFixed(1)
-                this.colherCafe = (0 * this.multiplicador).toFixed(1)
-                this.copoAmericano = (0 * this.multiplicador).toFixed(1)
-                this.Ugramas = (3 * this.multiplicador).toFixed(1)
-                this.Uquilos = (0 * this.multiplicador).toFixed(1)
-                this.Umililitros = (0 * this.multiplicador).toFixed(1)
-                this.Ulitros = (0 * this.multiplicador).toFixed(1)
-                if (this.colherSobremesa == 0.5) {
-                    this.complementoColherSobremesa = ' (Meia Colher)'
-                }
-            } else if (this.ingredienteAtivo == 'Sal' && this.medidaAtiva == 'Gramas') {
-                this.xicaraCha = (0.0030303030303031 * this.inputvalue).toFixed(1)
-                this.colherSopa = (0.0555555555555556 * this.inputvalue).toFixed(1)
-                this.colherCha = (0.1666666666666667 * this.inputvalue).toFixed(1)
-                this.colherSobremesa = (0.0833333333333333 * this.inputvalue).toFixed(1)
-                this.colherCafe = (0.33333333333333337 * this.inputvalue).toFixed(1)
-                this.copoAmericano = (0.00370370370370371 * this.inputvalue).toFixed(1)
-                this.Ugramas = (0 * this.inputvalue).toFixed(1)
-                this.Uquilos = (0.001 * this.inputvalue).toFixed(1)
-                this.Umililitros = (0 * this.inputvalue).toFixed(1)
-                this.Ulitros = (0 * this.inputvalue).toFixed(1)
-                if (this.colherSobremesa > 0.490 && this.colherSobremesa < 0.600) {
-                    this.complementoColherSobremesa = ' (Meia Colher)'
-                }
-                if (this.colherSopa > 0.490 && this.colherSopa < 0.600) {
-                    this.complementoColherSopa = ' (Meia Colher)'
-                }
-                if (this.xicaraCha > 0.490 && this.xicaraCha < 0.600) {
-                    this.complementoXicara = ' (Meia Xícara)'
-                } else if (this.xicaraCha > 0.290 && this.xicaraCha < 0.360) {
-                    this.complementoXicara = ' (Um Terço)'
-                }
-                if (this.copoAmericano > 0.490 && this.copoAmericano < 0.600) {
-                    this.complementoCopo = ' (Meio Copo)'
-                } else if (this.copoAmericano > 0.290 && this.copoAmericano < 0.360) {
-                    this.complementoCopo = ' (Um Terço)'
-                }
-            }
-            else if (this.ingredienteAtivo == 'Mel' && this.medidaAtiva == 'Xícara(s) de Chá') {
-                this.xicaraCha = (0 * this.multiplicador).toFixed(1)
-                this.colherSopa = (16 * this.multiplicador).toFixed(1)
-                this.colherCha = (48 * this.multiplicador).toFixed(1)
-                this.colherSobremesa = (24 * this.multiplicador).toFixed(1)
-                this.colherCafe = (96 * this.multiplicador).toFixed(1)
-                this.copoAmericano = (1.25 * this.multiplicador).toFixed(1)
-                this.Ugramas = (300 * this.multiplicador).toFixed(1)
-                this.Uquilos = (0.3 * this.multiplicador).toFixed(1)
-                this.Umililitros = (240 * this.multiplicador).toFixed(1)
-                this.Ulitros = (0.240 * this.multiplicador).toFixed(1)
-            } else if (this.ingredienteAtivo == 'Mel' && this.medidaAtiva == 'Colher(es) de Sopa') {
-                this.xicaraCha = (0.064 * this.multiplicador).toFixed(1)
-                this.colherSopa = (0 * this.multiplicador).toFixed(1)
-                this.colherCha = (1.5 * this.multiplicador).toFixed(1)
-                this.colherSobremesa = (3 * this.multiplicador).toFixed(1)
-                this.colherCafe = (6 * this.multiplicador).toFixed(1)
-                this.copoAmericano = (0.08 * this.multiplicador).toFixed(1)
-                this.Ugramas = (18.75 * this.multiplicador).toFixed(1)
-                this.Uquilos = (0 * this.multiplicador).toFixed(1)
-                this.Umililitros = (15 * this.multiplicador).toFixed(1)
-                this.Ulitros = (0 * this.multiplicador).toFixed(1)
-                if (this.xicaraCha > 0.490 && this.xicaraCha < 0.600) {
-                    this.complementoXicara = ' (Meia Xícara)'
-                } else if (this.xicaraCha > 0.290 && this.xicaraCha < 0.360) {
-                    this.complementoXicara = ' (Um Terço)'
-                }
-                if (this.copoAmericano > 0.490 && this.copoAmericano < 0.600) {
-                    this.complementoCopo = ' (Meio Copo)'
-                } else if (this.copoAmericano > 0.290 && this.copoAmericano < 0.360) {
-                    this.complementoCopo = ' (Um Terço)'
-                }
-            } else if (this.ingredienteAtivo == 'Mel' && this.medidaAtiva == 'Colher(es) de Sobremesa') {
-                this.xicaraCha = (0.042 * this.multiplicador).toFixed(1)
-                this.colherSopa = (0.66 * this.multiplicador).toFixed(1)
-                this.colherCha = (2 * this.multiplicador).toFixed(1)
-                this.colherSobremesa = (0 * this.multiplicador).toFixed(1)
-                this.colherCafe = (4 * this.multiplicador).toFixed(1)
-                this.copoAmericano = (0.05 * this.multiplicador).toFixed(1)
-                this.Ugramas = (12.5 * this.multiplicador).toFixed(1)
-                this.Uquilos = (0 * this.multiplicador).toFixed(1)
-                this.Umililitros = (10 * this.multiplicador).toFixed(1)
-                this.Ulitros = (0 * this.multiplicador).toFixed(1)
-            } else if (this.ingredienteAtivo == 'Mel' && this.medidaAtiva == 'Colher(es) de Chá') {
-                this.xicaraCha = (0 * this.multiplicador).toFixed(1)
-                this.colherSopa = (0.33 * this.multiplicador).toFixed(1)
-                this.colherCha = (0 * this.multiplicador).toFixed(1)
-                this.colherSobremesa = (0.5 * this.multiplicador).toFixed(1)
-                this.colherCafe = (2 * this.multiplicador).toFixed(1)
-                this.copoAmericano = (0 * this.multiplicador).toFixed(1)
-                this.Ugramas = (6.25 * this.multiplicador).toFixed(1)
-                this.Uquilos = (0 * this.multiplicador).toFixed(1)
-                this.Umililitros = (5 * this.multiplicador).toFixed(1)
-                this.Ulitros = (0 * this.multiplicador).toFixed(1)
-                if (this.colherSobremesa == 0.5) {
-                    this.complementoColherSobremesa = ' (Meia Colher)'
-                }
-            } else if (this.ingredienteAtivo == 'Mel' && this.medidaAtiva == 'Colher(es) de Café') {
-                this.xicaraCha = (0 * this.multiplicador).toFixed(1)
-                this.colherSopa = (0.165 * this.multiplicador).toFixed(1)
-                this.colherCha = (0.5 * this.multiplicador).toFixed(1)
-                this.colherSobremesa = (0.25 * this.multiplicador).toFixed(1)
-                this.colherCafe = (0 * this.multiplicador).toFixed(1)
-                this.copoAmericano = (0 * this.multiplicador).toFixed(1)
-                this.Ugramas = (3.125 * this.multiplicador).toFixed(1)
-                this.Uquilos = (0 * this.multiplicador).toFixed(1)
-                this.Umililitros = (2.5 * this.multiplicador).toFixed(1)
-                this.Ulitros = (0 * this.multiplicador).toFixed(1)
-            }
-            else if (this.ingredienteAtivo == 'Mel' && this.medidaAtiva == 'Gramas') {
-                this.xicaraCha = (0.0033333334 * this.inputvalue).toFixed(1)
-                this.colherSopa = (0.053333334 * this.inputvalue).toFixed(1)
-                this.colherCha = (0.16 * this.inputvalue).toFixed(1)
-                this.colherSobremesa = (0.080 * this.inputvalue).toFixed(1)
-                this.colherCafe = (0.32 * this.inputvalue).toFixed(1)
-                this.copoAmericano = (0.00421299999 * this.inputvalue).toFixed(1)
-                this.Ugramas = (0 * this.inputvalue).toFixed(1)
-                this.Uquilos = (0.001 * this.inputvalue).toFixed(1)
-                this.Umililitros = (0.75 * this.inputvalue).toFixed(1)
-                this.Ulitros = (0 * this.inputvalue).toFixed(1)
-                if (this.colherSobremesa > 0.490 && this.colherSobremesa < 0.600) {
-                    this.complementoColherSobremesa = ' (Meia Colher)'
-                }
-                if (this.colherSopa > 0.490 && this.colherSopa < 0.600) {
-                    this.complementoColherSopa = ' (Meia Colher)'
-                }
-                if (this.xicaraCha > 0.490 && this.xicaraCha < 0.600) {
-                    this.complementoXicara = ' (Meia Xícara)'
-                } else if (this.xicaraCha > 0.290 && this.xicaraCha < 0.360) {
-                    this.complementoXicara = ' (Um Terço)'
-                }
-                if (this.copoAmericano > 0.490 && this.copoAmericano < 0.600) {
-                    this.complementoCopo = ' (Meio Copo)'
-                } else if (this.copoAmericano > 0.290 && this.copoAmericano < 0.360) {
-                    this.complementoCopo = ' (Um Terço)'
-                }
-            } else if (this.ingredienteAtivo == 'Mel' && this.medidaAtiva == 'Mililitros (ML)') {
-                this.xicaraCha = (0.00417 * this.inputvalue).toFixed(1)
-                this.colherSopa = (0.0667 * this.inputvalue).toFixed(1)
-                this.colherCha = (0.2 * this.inputvalue).toFixed(1)
-                this.colherSobremesa = (0.1 * this.inputvalue).toFixed(1)
-                this.colherCafe = (0.4 * this.inputvalue).toFixed(1)
-                this.copoAmericano = (0.0053 * this.inputvalue).toFixed(1)
-                this.Ugramas = (1.25 * this.inputvalue).toFixed(1)
-                this.Uquilos = (0.00125 * this.inputvalue).toFixed(1)
-                this.Umililitros = (0 * this.inputvalue).toFixed(1)
-                this.Ulitros = (0.001 * this.inputvalue).toFixed(1)
-                if (this.xicaraCha > 0.490 && this.xicaraCha < 0.600) {
-                    this.complementoXicara = ' (Meia Xícara)'
-                } else if (this.xicaraCha > 0.290 && this.xicaraCha < 0.360) {
-                    this.complementoXicara = ' (Um Terço)'
-                }
-                if (this.copoAmericano > 0.490 && this.copoAmericano < 0.600) {
-                    this.complementoCopo = ' (Meio Copo)'
-                } else if (this.copoAmericano > 0.290 && this.copoAmericano < 0.360) {
-                    this.complementoCopo = ' (Um Terço)'
-                }
-            } else if (this.ingredienteAtivo == 'Mel' && this.medidaAtiva == 'Litro(s)') {
-                this.xicaraCha = (4.16667 * this.inputvalue).toFixed(1)
-                this.colherSopa = (66.6667 * this.inputvalue).toFixed(1)
-                this.colherCha = (200 * this.inputvalue).toFixed(1)
-                this.colherSobremesa = (100 * this.inputvalue).toFixed(1)
-                this.colherCafe = (400 * this.inputvalue).toFixed(1)
-                this.copoAmericano = (5.263 * this.inputvalue).toFixed(1)
-                this.Ugramas = (1250 * this.inputvalue).toFixed(1)
-                this.Uquilos = (1.25 * this.inputvalue).toFixed(1)
-                this.Umililitros = (1000 * this.inputvalue).toFixed(1)
-                this.Ulitros = (0 * this.inputvalue).toFixed(1)
-            } else if (this.ingredienteAtivo == 'Mel' && this.medidaAtiva == 'Copo(s) Americano(s)') {
-                this.xicaraCha = (0.8 * this.multiplicador).toFixed(1)
-                this.colherSopa = (12.66 * this.multiplicador).toFixed(1)
-                this.colherCha = (38 * this.multiplicador).toFixed(1)
-                this.colherSobremesa = (19 * this.multiplicador).toFixed(1)
-                this.colherCafe = (76 * this.multiplicador).toFixed(1)
-                this.copoAmericano = (0 * this.multiplicador).toFixed(1)
-                this.Ugramas = (237.5 * this.multiplicador).toFixed(1)
-                this.Uquilos = (0.24 * this.multiplicador).toFixed(1)
-                this.Umililitros = (190 * this.multiplicador).toFixed(1)
-                this.Ulitros = (0.19 * this.multiplicador).toFixed(1)
-            } else if (this.ingredienteAtivo == 'Pó de Café' && this.medidaAtiva == 'Xícara(s) de Chá') {
-                this.xicaraCha = (0 * this.multiplicador).toFixed(1)
-                this.colherSopa = (10 * this.multiplicador).toFixed(1)
-                this.colherCha = (29.15951972555746 * this.multiplicador).toFixed(1)
-                this.colherSobremesa = (14.57975986277873 * this.multiplicador).toFixed(1)
-                this.colherCafe = (58.31903945111492 * this.multiplicador).toFixed(1)
-                this.copoAmericano = (1.25 * this.multiplicador).toFixed(1)
-                this.Ugramas = (90 * this.multiplicador).toFixed(1)
-                this.Uquilos = (0.09 * this.multiplicador).toFixed(1)
-                this.Umililitros = (0 * this.multiplicador).toFixed(1)
-                this.Ulitros = (0 * this.multiplicador).toFixed(1)
-                if (this.colherSobremesa == 0.5) {
-                    this.complementoColherSobremesa = ' (Meia Colher)'
-                }
-            } else if (this.ingredienteAtivo == 'Pó de Café' && this.medidaAtiva == 'Colher(es) de Sopa') {
-                this.xicaraCha = (0.1 * this.multiplicador).toFixed(1)
-                this.colherSopa = (0 * this.multiplicador).toFixed(1)
-                this.colherCha = (3 * this.multiplicador).toFixed(1)
-                this.colherSobremesa = (1.5 * this.multiplicador).toFixed(1)
-                this.colherCafe = (6 * this.multiplicador).toFixed(1)
-                this.copoAmericano = (0.15 * this.multiplicador).toFixed(1)
-                this.Ugramas = (9 * this.multiplicador).toFixed(1)
-                this.Uquilos = (0 * this.multiplicador).toFixed(1)
-                this.Umililitros = (0 * this.multiplicador).toFixed(1)
-                this.Ulitros = (0 * this.multiplicador).toFixed(1)
-                if (this.xicaraCha > 0.490 && this.xicaraCha < 0.600) {
-                    this.complementoXicara = ' (Meia Xícara)'
-                } if (this.colherSobremesa == 1.5) {
-                    this.complementoColherSobremesa = ' (Uma Colher e Meia)'
-                }
-            } else if (this.ingredienteAtivo == 'Pó de Café' && this.medidaAtiva == 'Colher(es) de Sobremesa') {
-                this.xicaraCha = (0.066666666666667 * this.multiplicador).toFixed(1)
-                this.colherSopa = (0.66 * this.multiplicador).toFixed(1)
-                this.colherCha = (2 * this.multiplicador).toFixed(1)
-                this.colherSobremesa = (0 * this.multiplicador).toFixed(1)
-                this.colherCafe = (4 * this.multiplicador).toFixed(1)
-                this.copoAmericano = (0.1 * this.multiplicador).toFixed(1)
-                this.Ugramas = (6 * this.multiplicador).toFixed(1)
-                this.Uquilos = (0 * this.multiplicador).toFixed(1)
-                this.Umililitros = (0 * this.multiplicador).toFixed(1)
-                this.Ulitros = (0 * this.multiplicador).toFixed(1)
-                if (this.xicaraCha > 0.490 && this.xicaraCha < 0.600) {
-                    this.complementoXicara = ' (Meia Xícara)'
-                }
-            } else if (this.ingredienteAtivo == 'Pó de Café' && this.medidaAtiva == 'Colher(es) de Chá') {
-                this.xicaraCha = (0 * this.multiplicador).toFixed(1)
-                this.colherSopa = (0.333337 * this.multiplicador).toFixed(1)
-                this.colherCha = (0 * this.multiplicador).toFixed(1)
-                this.colherSobremesa = (0.5 * this.multiplicador).toFixed(1)
-                this.colherCafe = (2 * this.multiplicador).toFixed(1)
-                this.copoAmericano = (0 * this.multiplicador).toFixed(1)
-                this.Ugramas = (3 * this.multiplicador).toFixed(1)
-                this.Uquilos = (0 * this.multiplicador).toFixed(1)
-                this.Umililitros = (0 * this.multiplicador).toFixed(1)
-                this.Ulitros = (0 * this.multiplicador).toFixed(1)
-                if (this.colherSobremesa == 0.5) {
-                    this.complementoColherSobremesa = ' (Meia Colher)'
-                }
-            } else if (this.ingredienteAtivo == 'Pó de Café' && this.medidaAtiva == 'Copo(s) Americano(s)') {
-                this.xicaraCha = (0.8 * this.multiplicador).toFixed(1)
-                this.colherSopa = (6.666666666666667 * this.multiplicador).toFixed(1)
-                this.colherCha = (20 * this.multiplicador).toFixed(1)
-                this.colherSobremesa = (10 * this.multiplicador).toFixed(1)
-                this.colherCafe = (40 * this.multiplicador).toFixed(1)
-                this.copoAmericano = (0 * this.multiplicador).toFixed(1)
-                this.Ugramas = (60 * this.multiplicador).toFixed(1)
-                this.Uquilos = (0.06 * this.multiplicador).toFixed(1)
-                this.Umililitros = (0 * this.multiplicador).toFixed(1)
-                this.Ulitros = (0 * this.multiplicador).toFixed(1)
-                if (this.colherSobremesa == 0.5) {
-                    this.complementoColherSobremesa = ' (Meia Colher)'
-                }
-            } else if (this.ingredienteAtivo == 'Pó de Café' && this.medidaAtiva == 'Gramas') {
-                this.xicaraCha = (0.01111111111111112 * this.inputvalue).toFixed(1)
-                this.colherSopa = (0.11111111111111112 * this.inputvalue).toFixed(1)
-                this.colherCha = (0.33333333333333334 * this.inputvalue).toFixed(1)
-                this.colherSobremesa = (0.1666666666666667 * this.inputvalue).toFixed(1)
-                this.colherCafe = (0.6666666666666667 * this.inputvalue).toFixed(1)
-                this.copoAmericano = (0.0166666666666667 * this.inputvalue).toFixed(1)
-                this.Ugramas = (0 * this.inputvalue).toFixed(1)
-                this.Uquilos = (0.001 * this.inputvalue).toFixed(1)
-                this.Umililitros = (0 * this.inputvalue).toFixed(1)
-                this.Ulitros = (0 * this.inputvalue).toFixed(1)
-                if (this.colherSobremesa > 0.490 && this.colherSobremesa < 0.600) {
-                    this.complementoColherSobremesa = ' (Meia Colher)'
-                }
-                if (this.colherSopa > 0.490 && this.colherSopa < 0.600) {
-                    this.complementoColherSopa = ' (Meia Colher)'
-                }
-                if (this.xicaraCha > 0.490 && this.xicaraCha < 0.600) {
-                    this.complementoXicara = ' (Meia Xícara)'
-                } else if (this.xicaraCha > 0.290 && this.xicaraCha < 0.360) {
-                    this.complementoXicara = ' (Um Terço)'
-                }
-                if (this.copoAmericano > 0.490 && this.copoAmericano < 0.600) {
-                    this.complementoCopo = ' (Meio Copo)'
-                } else if (this.copoAmericano > 0.290 && this.copoAmericano < 0.360) {
-                    this.complementoCopo = ' (Um Terço)'
-                }
-            } else if (this.ingredienteAtivo == 'Farinha de Trigo' && this.medidaAtiva == 'Colher(es) de Sopa') {
-                this.xicaraCha = (0.01 * this.multiplicador).toFixed(1)
-                this.colherSopa = (0 * this.multiplicador).toFixed(1)
-                this.colherCha = (3 * this.multiplicador).toFixed(1)
-                this.colherSobremesa = (1.5 * this.multiplicador).toFixed(1)
-                this.colherCafe = (6 * this.multiplicador).toFixed(1)
-                this.copoAmericano = (0.1565217391304348 * this.multiplicador).toFixed(1)
-                this.Ugramas = (14 * this.multiplicador).toFixed(1)
-                this.Uquilos = (0 * this.multiplicador).toFixed(1)
-                this.Umililitros = (0 * this.multiplicador).toFixed(1)
-                this.Ulitros = (0 * this.multiplicador).toFixed(1)
-                if (this.xicaraCha > 0.490 && this.xicaraCha < 0.600) {
-                    this.complementoXicara = ' (Meia Xícara)'
-                } if (this.colherSobremesa == 1.5) {
-                    this.complementoColherSobremesa = ' (Uma Colher e Meia)'
-                }
-            } else if (this.ingredienteAtivo == 'Farinha de Trigo' && this.medidaAtiva == 'Xícara(s) de Chá') {
-                this.xicaraCha = (0 * this.multiplicador).toFixed(1)
-                this.colherSopa = (10 * this.multiplicador).toFixed(1)
-                this.colherCha = (28 * this.multiplicador).toFixed(1)
-                this.colherSobremesa = (14 * this.multiplicador).toFixed(1)
-                this.colherCafe = (56 * this.multiplicador).toFixed(1)
-                this.copoAmericano = (1.25 * this.multiplicador).toFixed(1)
-                this.Ugramas = (140 * this.multiplicador).toFixed(1)
-                this.Uquilos = (0.140 * this.multiplicador).toFixed(1)
-                this.Umililitros = (0 * this.multiplicador).toFixed(1)
-                this.Ulitros = (0 * this.multiplicador).toFixed(1)
-                if (this.colherSobremesa == 0.5) {
-                    this.complementoColherSobremesa = ' (Meia Colher)'
-                }
-            } else if (this.ingredienteAtivo == 'Farinha de Trigo' && this.medidaAtiva == 'Copo(s) Americano(s)') {
-                this.xicaraCha = (0.8 * this.multiplicador).toFixed(1)
-                this.colherSopa = (8.214285714285714 * this.multiplicador).toFixed(1)
-                this.colherCha = (24.64285714294515 * this.multiplicador).toFixed(1)
-                this.colherSobremesa = (12.32142857147258 * this.multiplicador).toFixed(1)
-                this.colherCafe = (49.28571428578469 * this.multiplicador).toFixed(1)
-                this.copoAmericano = (0 * this.multiplicador).toFixed(1)
-                this.Ugramas = (115 * this.multiplicador).toFixed(1)
-                this.Uquilos = (0.115 * this.multiplicador).toFixed(1)
-                this.Umililitros = (0 * this.multiplicador).toFixed(1)
-                this.Ulitros = (0 * this.multiplicador).toFixed(1)
-                if (this.colherSobremesa == 0.5) {
-                    this.complementoColherSobremesa = ' (Meia Colher)'
-                }
-            } else if (this.ingredienteAtivo == 'Farinha de Trigo' && this.medidaAtiva == 'Gramas') {
-                this.xicaraCha = (0.00625 * this.inputvalue).toFixed(1)
-                this.colherSopa = (0.0714285714285714 * this.inputvalue).toFixed(1)
-                this.colherCha = (0.2142857142857142 * this.inputvalue).toFixed(1)
-                this.colherSobremesa = (0.1071428571428571 * this.inputvalue).toFixed(1)
-                this.colherCafe = (0.4285714285714284 * this.inputvalue).toFixed(1)
-                this.copoAmericano = (0.008695652173914 * this.inputvalue).toFixed(1)
-                this.Ugramas = (0 * this.inputvalue).toFixed(1)
-                this.Uquilos = (0.001 * this.inputvalue).toFixed(1)
-                this.Umililitros = (0 * this.inputvalue).toFixed(1)
-                this.Ulitros = (0 * this.inputvalue).toFixed(1)
-                if (this.colherSobremesa > 0.490 && this.colherSobremesa < 0.600) {
-                    this.complementoColherSobremesa = ' (Meia Colher)'
-                }
-                if (this.colherSopa > 0.490 && this.colherSopa < 0.600) {
-                    this.complementoColherSopa = ' (Meia Colher)'
-                }
-                if (this.xicaraCha > 0.490 && this.xicaraCha < 0.600) {
-                    this.complementoXicara = ' (Meia Xícara)'
-                } else if (this.xicaraCha > 0.290 && this.xicaraCha < 0.360) {
-                    this.complementoXicara = ' (Um Terço)'
-                }
-                if (this.copoAmericano > 0.490 && this.copoAmericano < 0.600) {
-                    this.complementoCopo = ' (Meio Copo)'
-                } else if (this.copoAmericano > 0.290 && this.copoAmericano < 0.360) {
-                    this.complementoCopo = ' (Um Terço)'
-                }
-            } else if (this.ingredienteAtivo == 'Farinha de Trigo' && this.medidaAtiva == 'Quilo(s)') {
-                this.xicaraCha = (6.25 * this.inputvalue).toFixed(1)
-                this.colherSopa = (71.42857142857143 * this.inputvalue).toFixed(1)
-                this.colherCha = (214.2857142857142 * this.inputvalue).toFixed(1)
-                this.colherSobremesa = (107.1428571428571 * this.inputvalue).toFixed(1)
-                this.colherCafe = (428.5714285714284 * this.inputvalue).toFixed(1)
-                this.copoAmericano = (8.695652173913999 * this.inputvalue).toFixed(1)
-                this.Ugramas = (1000 * this.inputvalue).toFixed(1)
-                this.Uquilos = (0 * this.inputvalue).toFixed(1)
-                this.Umililitros = (0 * this.inputvalue).toFixed(1)
-                this.Ulitros = (0 * this.inputvalue).toFixed(1)
-                if (this.colherSobremesa == 0.5) {
-                    this.complementoColherSobremesa = ' (Meia Colher)'
-                }
-            } else if (this.ingredienteAtivo == 'Frango Desfiado' && this.medidaAtiva == 'Xícara(s) de Chá') {
-                this.xicaraCha = (0 * this.multiplicador).toFixed(1)
-                this.colherSopa = (7.1111111111111112 * this.multiplicador).toFixed(1)
-                this.colherCha = (0 * this.multiplicador).toFixed(1)
-                this.colherSobremesa = (10.66666666666667 * this.multiplicador).toFixed(1)
-                this.colherCafe = (0 * this.multiplicador).toFixed(1)
-                this.copoAmericano = (1.25 * this.multiplicador).toFixed(1)
-                this.Ugramas = (128 * this.multiplicador).toFixed(1)
-                this.Uquilos = (0.128 * this.multiplicador).toFixed(1)
-                this.Umililitros = (0 * this.multiplicador).toFixed(1)
-                this.Ulitros = (0 * this.multiplicador).toFixed(1)
-                if (this.colherSobremesa == 0.5) {
-                    this.complementoColherSobremesa = ' (Meia Colher)'
-                }
-            } else if (this.ingredienteAtivo == 'Frango Desfiado' && this.medidaAtiva == 'Colher(es) de Sopa') {
-                this.xicaraCha = (0.140625 * this.multiplicador).toFixed(1)
-                this.colherSopa = (0 * this.multiplicador).toFixed(1)
-                this.colherCha = (0 * this.multiplicador).toFixed(1)
-                this.colherSobremesa = (1.5 * this.multiplicador).toFixed(1)
-                this.colherCafe = (0 * this.multiplicador).toFixed(1)
-                this.copoAmericano = (0.1565217391304348 * this.multiplicador).toFixed(1)
-                this.Ugramas = (18 * this.multiplicador).toFixed(1)
-                this.Uquilos = (0 * this.multiplicador).toFixed(1)
-                this.Umililitros = (0 * this.multiplicador).toFixed(1)
-                this.Ulitros = (0 * this.multiplicador).toFixed(1)
-                if (this.xicaraCha > 0.490 && this.xicaraCha < 0.600) {
-                    this.complementoXicara = ' (Meia Xícara)'
-                } if (this.colherSobremesa == 1.5) {
-                    this.complementoColherSobremesa = ' (Uma Colher e Meia)'
-                }
-            } else if (this.ingredienteAtivo == 'Frango Desfiado' && this.medidaAtiva == 'Gramas') {
-                this.xicaraCha = (0.0078125 * this.inputvalue).toFixed(1)
-                this.colherSopa = (0.0555555555555556 * this.inputvalue).toFixed(1)
-                this.colherCha = (0.1666666666666667 * this.inputvalue).toFixed(1)
-                this.colherSobremesa = (0.08333333333333334 * this.inputvalue).toFixed(1)
-                this.colherCafe = (0.33333333333333334 * this.inputvalue).toFixed(1)
-                this.copoAmericano = (0.0095238095238096 * this.inputvalue).toFixed(1)
-                this.Ugramas = (0 * this.inputvalue).toFixed(1)
-                this.Uquilos = (0.001 * this.inputvalue).toFixed(1)
-                this.Umililitros = (0 * this.inputvalue).toFixed(1)
-                this.Ulitros = (0 * this.inputvalue).toFixed(1)
-                if (this.colherSobremesa > 0.490 && this.colherSobremesa < 0.600) {
-                    this.complementoColherSobremesa = ' (Meia Colher)'
-                }
-                if (this.colherSopa > 0.490 && this.colherSopa < 0.600) {
-                    this.complementoColherSopa = ' (Meia Colher)'
-                }
-                if (this.xicaraCha > 0.490 && this.xicaraCha < 0.600) {
-                    this.complementoXicara = ' (Meia Xícara)'
-                } else if (this.xicaraCha > 0.290 && this.xicaraCha < 0.360) {
-                    this.complementoXicara = ' (Um Terço)'
-                }
-                if (this.copoAmericano > 0.490 && this.copoAmericano < 0.600) {
-                    this.complementoCopo = ' (Meio Copo)'
-                } else if (this.copoAmericano > 0.290 && this.copoAmericano < 0.360) {
-                    this.complementoCopo = ' (Um Terço)'
-                }
-            } else if (this.ingredienteAtivo == 'Feijão Cru' && this.medidaAtiva == 'Xícara(s) de Chá') {
-                this.xicaraCha = (0 * this.multiplicador).toFixed(1)
-                this.colherSopa = (0 * this.multiplicador).toFixed(1)
-                this.colherCha = (0 * this.multiplicador).toFixed(1)
-                this.colherSobremesa = (0 * this.multiplicador).toFixed(1)
-                this.colherCafe = (0 * this.multiplicador).toFixed(1)
-                this.copoAmericano = (1.25 * this.multiplicador).toFixed(1)
-                this.Ugramas = (250 * this.multiplicador).toFixed(1)
-                this.Uquilos = (0.250 * this.multiplicador).toFixed(1)
-                this.Umililitros = (0 * this.multiplicador).toFixed(1)
-                this.Ulitros = (0 * this.multiplicador).toFixed(1)
-                if (this.colherSobremesa == 0.5) {
-                    this.complementoColherSobremesa = ' (Meia Colher)'
-                }
-            } else if (this.ingredienteAtivo == 'Feijão Cru' && this.medidaAtiva == 'Copo(s) Americano(s)') {
-                this.xicaraCha = (0.8 * this.multiplicador).toFixed(1)
-                this.colherSopa = (0 * this.multiplicador).toFixed(1)
-                this.colherCha = (0 * this.multiplicador).toFixed(1)
-                this.colherSobremesa = (0 * this.multiplicador).toFixed(1)
-                this.colherCafe = (0 * this.multiplicador).toFixed(1)
-                this.copoAmericano = (0 * this.multiplicador).toFixed(1)
-                this.Ugramas = (170 * this.multiplicador).toFixed(1)
-                this.Uquilos = (0.170 * this.multiplicador).toFixed(1)
-                this.Umililitros = (0 * this.multiplicador).toFixed(1)
-                this.Ulitros = (0 * this.multiplicador).toFixed(1)
-                if (this.colherSobremesa == 0.5) {
-                    this.complementoColherSobremesa = ' (Meia Colher)'
-                }
-            } else if (this.ingredienteAtivo == 'Feijão Cru' && this.medidaAtiva == 'Gramas') {
-                this.xicaraCha = (0.004 * this.inputvalue).toFixed(1)
-                this.colherSopa = (0.0454545454545455 * this.inputvalue).toFixed(1)
-                this.colherCha = (0 * this.inputvalue).toFixed(1)
-                this.colherSobremesa = (0 * this.inputvalue).toFixed(1)
-                this.colherCafe = (0 * this.inputvalue).toFixed(1)
-                this.copoAmericano = (0.0058823529411765 * this.inputvalue).toFixed(1)
-                this.Ugramas = (0 * this.inputvalue).toFixed(1)
-                this.Uquilos = (0.001 * this.inputvalue).toFixed(1)
-                this.Umililitros = (0 * this.inputvalue).toFixed(1)
-                this.Ulitros = (0 * this.inputvalue).toFixed(1)
-                if (this.colherSobremesa > 0.490 && this.colherSobremesa < 0.600) {
-                    this.complementoColherSobremesa = ' (Meia Colher)'
-                }
-                if (this.colherSopa > 0.490 && this.colherSopa < 0.600) {
-                    this.complementoColherSopa = ' (Meia Colher)'
-                }
-                if (this.xicaraCha > 0.490 && this.xicaraCha < 0.600) {
-                    this.complementoXicara = ' (Meia Xícara)'
-                } else if (this.xicaraCha > 0.290 && this.xicaraCha < 0.360) {
-                    this.complementoXicara = ' (Um Terço)'
-                }
-                if (this.copoAmericano > 0.490 && this.copoAmericano < 0.600) {
-                    this.complementoCopo = ' (Meio Copo)'
-                } else if (this.copoAmericano > 0.290 && this.copoAmericano < 0.360) {
-                    this.complementoCopo = ' (Um Terço)'
-                }
-            } else if (this.ingredienteAtivo == 'Manteiga' && this.medidaAtiva == 'Colher(es) de Sopa') {
-                this.xicaraCha = (0.072 * this.multiplicador).toFixed(1)
-                this.colherSopa = (0 * this.multiplicador).toFixed(1)
-                this.colherCha = (3 * this.multiplicador).toFixed(1)
-                this.colherSobremesa = (1.5 * this.multiplicador).toFixed(1)
-                this.colherCafe = (6 * this.multiplicador).toFixed(1)
-                this.copoAmericano = (0 * this.multiplicador).toFixed(1)
-                this.Ugramas = (18 * this.multiplicador).toFixed(1)
-                this.Uquilos = (0 * this.multiplicador).toFixed(1)
-                this.Umililitros = (0 * this.multiplicador).toFixed(1)
-                this.Ulitros = (0 * this.multiplicador).toFixed(1)
-                if (this.xicaraCha > 0.490 && this.xicaraCha < 0.600) {
-                    this.complementoXicara = ' (Meia Xícara)'
-                } if (this.colherSobremesa == 1.5) {
-                    this.complementoColherSobremesa = ' (Uma Colher e Meia)'
-                }
-            } else if (this.ingredienteAtivo == 'Manteiga' && this.medidaAtiva == 'Colher(es) de Sobremesa') {
-                this.xicaraCha = (0 * this.multiplicador).toFixed(1)
-                this.colherSopa = (0.66 * this.multiplicador).toFixed(1)
-                this.colherCha = (2 * this.multiplicador).toFixed(1)
-                this.colherSobremesa = (0 * this.multiplicador).toFixed(1)
-                this.colherCafe = (4 * this.multiplicador).toFixed(1)
-                this.copoAmericano = (0 * this.multiplicador).toFixed(1)
-                this.Ugramas = (12 * this.multiplicador).toFixed(1)
-                this.Uquilos = (0 * this.multiplicador).toFixed(1)
-                this.Umililitros = (0 * this.multiplicador).toFixed(1)
-                this.Ulitros = (0 * this.multiplicador).toFixed(1)
-                if (this.xicaraCha > 0.490 && this.xicaraCha < 0.600) {
-                    this.complementoXicara = ' (Meia Xícara)'
-                }
-            } else if (this.ingredienteAtivo == 'Manteiga' && this.medidaAtiva == 'Colher(es) de Chá') {
-                this.xicaraCha = (0 * this.multiplicador).toFixed(1)
-                this.colherSopa = (0.333337 * this.multiplicador).toFixed(1)
-                this.colherCha = (0 * this.multiplicador).toFixed(1)
-                this.colherSobremesa = (0.5 * this.multiplicador).toFixed(1)
-                this.colherCafe = (2 * this.multiplicador).toFixed(1)
-                this.copoAmericano = (0 * this.multiplicador).toFixed(1)
-                this.Ugramas = (6 * this.multiplicador).toFixed(1)
-                this.Uquilos = (0 * this.multiplicador).toFixed(1)
-                this.Umililitros = (0 * this.multiplicador).toFixed(1)
-                this.Ulitros = (0 * this.multiplicador).toFixed(1)
-                if (this.colherSobremesa == 0.5) {
-                    this.complementoColherSobremesa = ' (Meia Colher)'
-                }
-            } else if (this.ingredienteAtivo == 'Manteiga' && this.medidaAtiva == 'Gramas') {
-                this.xicaraCha = (0.004 * this.inputvalue).toFixed(1)
-                this.colherSopa = (0.0555555555555556 * this.inputvalue).toFixed(1)
-                this.colherCha = (0.1666666666666667 * this.inputvalue).toFixed(1)
-                this.colherSobremesa = (0.0833333333333334 * this.inputvalue).toFixed(1)
-                this.colherCafe = (0.3333333333333334 * this.inputvalue).toFixed(1)
-                this.copoAmericano = (0.005 * this.inputvalue).toFixed(1)
-                this.Ugramas = (0 * this.inputvalue).toFixed(1)
-                this.Uquilos = (0.001 * this.inputvalue).toFixed(1)
-                this.Umililitros = (0 * this.inputvalue).toFixed(1)
-                this.Ulitros = (0 * this.inputvalue).toFixed(1)
-                if (this.colherSobremesa > 0.490 && this.colherSobremesa < 0.600) {
-                    this.complementoColherSobremesa = ' (Meia Colher)'
-                }
-                if (this.colherSopa > 0.490 && this.colherSopa < 0.600) {
-                    this.complementoColherSopa = ' (Meia Colher)'
-                }
-                if (this.xicaraCha > 0.490 && this.xicaraCha < 0.600) {
-                    this.complementoXicara = ' (Meia Xícara)'
-                } else if (this.xicaraCha > 0.290 && this.xicaraCha < 0.360) {
-                    this.complementoXicara = ' (Um Terço)'
-                }
-                if (this.copoAmericano > 0.490 && this.copoAmericano < 0.600) {
-                    this.complementoCopo = ' (Meio Copo)'
-                } else if (this.copoAmericano > 0.290 && this.copoAmericano < 0.360) {
-                    this.complementoCopo = ' (Um Terço)'
-                }
-            }  else if (this.ingredienteAtivo == 'Carne Moída' && this.medidaAtiva == 'Xícara(s) de Chá') {
-                this.xicaraCha = (0 * this.multiplicador).toFixed(1)
-                this.colherSopa = (7.166666666666667 * this.multiplicador).toFixed(1)
-                this.colherCha = (21.5 * this.multiplicador).toFixed(1)
-                this.colherSobremesa = (10.75 * this.multiplicador).toFixed(1)
-                this.colherCafe = (43 * this.multiplicador).toFixed(1)
-                this.copoAmericano = (1.25 * this.multiplicador).toFixed(1)
-                this.Ugramas = (172 * this.multiplicador).toFixed(1)
-                this.Uquilos = (0.172 * this.multiplicador).toFixed(1)
-                this.Umililitros = (0 * this.multiplicador).toFixed(1)
-                this.Ulitros = (0 * this.multiplicador).toFixed(1)
-                if (this.colherSobremesa == 0.5) {
-                    this.complementoColherSobremesa = ' (Meia Colher)'
-                }
-            } else if (this.ingredienteAtivo == 'Carne Moída' && this.medidaAtiva == 'Colher(es) de Sopa') {
-                this.xicaraCha = (0.1395348837209302 * this.multiplicador).toFixed(1)
-                this.colherSopa = (0 * this.multiplicador).toFixed(1)
-                this.colherCha = (3 * this.multiplicador).toFixed(1)
-                this.colherSobremesa = (1.5 * this.multiplicador).toFixed(1)
-                this.colherCafe = (6 * this.multiplicador).toFixed(1)
-                this.copoAmericano = (0 * this.multiplicador).toFixed(1)
-                this.Ugramas = (24 * this.multiplicador).toFixed(1)
-                this.Uquilos = (0 * this.multiplicador).toFixed(1)
-                this.Umililitros = (0 * this.multiplicador).toFixed(1)
-                this.Ulitros = (0 * this.multiplicador).toFixed(1)
-                if (this.xicaraCha > 0.490 && this.xicaraCha < 0.600) {
-                    this.complementoXicara = ' (Meia Xícara)'
-                } if (this.colherSobremesa == 1.5) {
-                    this.complementoColherSobremesa = ' (Uma Colher e Meia)'
-                }
-            } else if (this.ingredienteAtivo == 'Carne Moída' && this.medidaAtiva == 'Gramas') {
-                this.xicaraCha = (0.005813953488372 * this.inputvalue).toFixed(1)
-                this.colherSopa = (0.0416666666666667 * this.inputvalue).toFixed(1)
-                this.colherCha = (0.125 * this.inputvalue).toFixed(1)
-                this.colherSobremesa = (0.0625 * this.inputvalue).toFixed(1)
-                this.colherCafe = (0.25 * this.inputvalue).toFixed(1)
-                this.copoAmericano = (0.0072463768115942 * this.inputvalue).toFixed(1)
-                this.Ugramas = (0 * this.inputvalue).toFixed(1)
-                this.Uquilos = (0.001 * this.inputvalue).toFixed(1)
-                this.Umililitros = (0 * this.inputvalue).toFixed(1)
-                this.Ulitros = (0 * this.inputvalue).toFixed(1)
-                if (this.colherSobremesa > 0.490 && this.colherSobremesa < 0.600) {
-                    this.complementoColherSobremesa = ' (Meia Colher)'
-                }
-                if (this.colherSopa > 0.490 && this.colherSopa < 0.600) {
-                    this.complementoColherSopa = ' (Meia Colher)'
-                }
-                if (this.xicaraCha > 0.490 && this.xicaraCha < 0.600) {
-                    this.complementoXicara = ' (Meia Xícara)'
-                } else if (this.xicaraCha > 0.290 && this.xicaraCha < 0.360) {
-                    this.complementoXicara = ' (Um Terço)'
-                }
-                if (this.copoAmericano > 0.490 && this.copoAmericano < 0.600) {
-                    this.complementoCopo = ' (Meio Copo)'
-                } else if (this.copoAmericano > 0.290 && this.copoAmericano < 0.360) {
-                    this.complementoCopo = ' (Um Terço)'
-                }
-            } else if (this.ingredienteAtivo == 'Carne Moída' && this.medidaAtiva == 'Quilo(s)') {
-                this.xicaraCha = (5.813953488372093 * this.inputvalue).toFixed(1)
-                this.colherSopa = (41.66666666666667 * this.inputvalue).toFixed(1)
-                this.colherCha = (125 * this.inputvalue).toFixed(1)
-                this.colherSobremesa = (62.5 * this.inputvalue).toFixed(1)
-                this.colherCafe = (250 * this.inputvalue).toFixed(1)
-                this.copoAmericano = (7.246376811594203 * this.inputvalue).toFixed(1)
-                this.Ugramas = (1000 * this.inputvalue).toFixed(1)
-                this.Uquilos = (0 * this.inputvalue).toFixed(1)
-                this.Umililitros = (0 * this.inputvalue).toFixed(1)
-                this.Ulitros = (0 * this.inputvalue).toFixed(1)
-                if (this.colherSobremesa == 0.5) {
-                    this.complementoColherSobremesa = ' (Meia Colher)'
-                }
-            }  else if (this.ingredienteAtivo == 'Carne Moída' && this.medidaAtiva == 'Copo(s) Americano(s)') {
-                this.xicaraCha = (0.8 * this.multiplicador).toFixed(1)
-                this.colherSopa = (5.75 * this.multiplicador).toFixed(1)
-                this.colherCha = (17.25 * this.multiplicador).toFixed(1)
-                this.colherSobremesa = (8.625 * this.multiplicador).toFixed(1)
-                this.colherCafe = (34.5 * this.multiplicador).toFixed(1)
-                this.copoAmericano = (0 * this.multiplicador).toFixed(1)
-                this.Ugramas = (138 * this.multiplicador).toFixed(1)
-                this.Uquilos = (0.138 * this.multiplicador).toFixed(1)
-                this.Umililitros = (0 * this.multiplicador).toFixed(1)
-                this.Ulitros = (0 * this.multiplicador).toFixed(1)
-            } 
         }
-    }, watch: {
+    },
+    watch: {
         ingredienteAtivo: function() {
-            if (this.ingredienteAtivo == 'Arroz Cru') {
-                this.medidaAtiva = 'Xícara(s) de Chá'
-            } else if (this.ingredienteAtivo == 'Açúcar Cristal') {
-                this.medidaAtiva = 'Colher(es) de Sopa'
-            } else if (this.ingredienteAtivo == 'Farinha de Trigo') {
-                this.medidaAtiva = 'Xícara(s) de Chá'
-            } else if (this.ingredienteAtivo == 'Feijão Cru') {
-                this.medidaAtiva = 'Gramas'
-            } else if (this.ingredienteAtivo == 'Feijão Cru') {
-                this.medidaAtiva = 'Gramas'
-            } else if (this.ingredienteAtivo == 'Frango Desfiado') {
-                this.medidaAtiva = 'Gramas'
-            } else if (this.ingredienteAtivo == 'Líquidos') {
-                this.medidaAtiva = 'Mililitros (ML)'
-            } else if (this.ingredienteAtivo == 'Manteiga') {
-                this.medidaAtiva = 'Colher(es) de Sopa'
-            } else if (this.ingredienteAtivo == 'Mel') {
-                this.medidaAtiva = 'Colher(es) de Sopa'
-            } else if (this.ingredienteAtivo == 'Pó de Café') {
-                this.medidaAtiva = 'Xícara(s) de Chá'
-            } else if (this.ingredienteAtivo == 'Sal') {
-                this.medidaAtiva = 'Colher(es) de Chá'
-            } else if (this.ingredienteAtivo == 'Carne Moída') {
-                this.medidaAtiva = 'Xícara(s) de Chá'
+            const medidas = {
+                'Arroz Cru': 'Xícara(s) de Chá',
+                'Açúcar Cristal': 'Colher(es) de Sopa',
+                'Farinha de Trigo': 'Xícara(s) de Chá',
+                'Feijão Cru': 'Gramas',
+                'Frango Desfiado': 'Gramas',
+                'Líquidos': 'Mililitros (ML)',
+                'Manteiga': 'Colher(es) de Sopa',
+                'Mel': 'Colher(es) de Sopa',
+                'Pó de Café': 'Xícara(s) de Chá',
+                'Sal': 'Colher(es) de Chá',
+                'Carne Moída': 'Xícara(s) de Chá'
             }
+            this.medidaAtiva = medidas[this.ingredienteAtivo]
         },
         multiplicador: function() {
-            if (this.multiplicador == 0.5) {
-                this.quantidadeAtiva = '1/2'
-            } else if (this.multiplicador == 1) {
-                this.quantidadeAtiva = '1'
-            } else if (this.multiplicador == 0.3333333334) {
-                this.quantidadeAtiva = '1/3'
-            } else if (this.multiplicador == 0.25) {
-                this.quantidadeAtiva = '1/4'
-            } else if (this.multiplicador == 1.5) {
-                this.quantidadeAtiva = '1 1/2'
-            } else if (this.multiplicador == 2.5) {
-                this.quantidadeAtiva = '2 1/2'
-            } else if (this.multiplicador == 2) {
-                this.quantidadeAtiva = '2'
-            } else if (this.multiplicador == 3) {
-                this.quantidadeAtiva = '3'
-            } else if (this.multiplicador == 4) {
-                this.quantidadeAtiva = '4'
-            } else if (this.multiplicador == 5) {
-                this.quantidadeAtiva = '5'
+            const quantidades = {
+                0.5: '1/2',
+                1: '1',
+                0.3333333334: '1/3',
+                0.25: '1/4',
+                1.5: '1 1/2',
+                2.5: '2 1/2',
+                2: '2',
+                3: '3',
+                4: '4',
+                5: '5'
             }
+            this.quantidadeAtiva = quantidades[this.multiplicador]
+        },
+        inputvalue: function() {
+            this.quantidadeAtiva = this.inputvalue
         }
     }
 })
