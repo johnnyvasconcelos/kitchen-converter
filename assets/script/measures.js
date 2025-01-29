@@ -115,6 +115,68 @@ const vm = new Vue({
                 "Gramas": { xicaraCha: 0.0078, colherSopa: 0.0556, colherCha: 0.1667, colherSobremesa: 0.0833, colherCafe: 0.3333, copoAmericano: 0.0095, Ugramas: 0, Uquilos: 0.001, Umililitros: 0, Ulitros: 0 },
                 "Quilo(s)": { xicaraCha: 7.8, colherSopa: 55.6, colherCha: 166.7, colherSobremesa: 83.3, colherCafe: 333.3, copoAmericano: 9.5, Ugramas: 1000, Uquilos: 0, Umililitros: 0, Ulitros: 0 }
             },
+          "Grãos de Milho": {
+    "Xícara(s) de Chá": { 
+        "xicaraCha": 0, 
+        "colherSopa": 15, 
+        "colherCha": 0, 
+        "colherSobremesa": 10, 
+        "colherCafe": 0, 
+        "copoAmericano": 1.5, 
+        "Ugramas": 190, 
+        "Uquilos": 0.19, 
+        "Umililitros": 0, 
+        "Ulitros": 0 
+    },
+    "Copo(s) Americano(s)": { 
+        "xicaraCha": 0.73, 
+        "colherSopa": 15, 
+        "colherCha": 0, 
+        "colherSobremesa": 10, 
+        "colherCafe": 0, 
+        "copoAmericano": 0, 
+        "Ugramas": 130, 
+        "Uquilos": 0.13, 
+        "Umililitros": 0, 
+        "Ulitros": 0 
+    },
+    "Colher(es) de Sopa": { 
+        "xicaraCha": 0.079, 
+        "colherSopa": 0, 
+        "colherCha": 0, 
+        "colherSobremesa": 1.5, 
+        "colherCafe": 0, 
+        "copoAmericano": 0.12, 
+        "Ugramas": 15, 
+        "Uquilos": 0.015, 
+        "Umililitros": 0, 
+        "Ulitros": 0 
+    },
+    "Colher(es) de Sobremesa": { 
+        "xicaraCha": 0.042, 
+        "colherSopa": 0.6, 
+        "colherCha": 0, 
+        "colherSobremesa": 0, 
+        "colherCafe": 0, 
+        "copoAmericano": 0.08, 
+        "Ugramas": 10, 
+        "Uquilos": 0.01, 
+        "Umililitros": 0, 
+        "Ulitros": 0 
+    },
+    "Gramas": { 
+        "xicaraCha": 0.00526315789, 
+        "colherSopa": 0.066666666667, 
+        "colherCha": 0, 
+        "colherSobremesa": 0.1, 
+        "colherCafe": 0, 
+        "copoAmericano": 0.00769230769, 
+        "Ugramas": 0, 
+        "Uquilos": 0.001, 
+        "Umililitros": 0, 
+        "Ulitros": 0 
+    }
+},
             "Feijão Cru": {
                 "Xícara(s) de Chá": { xicaraCha: 0, colherSopa: 0, colherCha: 0, colherSobremesa: 0, colherCafe: 0, copoAmericano: 1.25, Ugramas: 250, Uquilos: 0.250, Umililitros: 0, Ulitros: 0 },
                 "Copo(s) Americano(s)": { xicaraCha: 0.8, colherSopa: 0, colherCha: 0, colherSobremesa: 0, colherCafe: 0, copoAmericano: 0, Ugramas: 170, Uquilos: 0.170, Umililitros: 0, Ulitros: 0 },
@@ -209,6 +271,7 @@ const vm = new Vue({
                 'Feijão Cru': 'Gramas',
                 'Frango Desfiado': 'Gramas',
                 'Líquidos': 'Mililitros (ML)',
+                'Grãos de Milho': 'Xícara(s) de Chá',
                 'Manteiga': 'Colher(es) de Sopa',
                 'Mel': 'Colher(es) de Sopa',
                 'Pó de Café': 'Xícara(s) de Chá',
