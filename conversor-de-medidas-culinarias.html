@@ -92,7 +92,7 @@
                                 <option value="Açúcar Cristal">Açúcar Cristal</option>
                                 <!--<option value="Açúcar Refinado">Açúcar Refinado</option>-->
                                 <option value="Arroz Cru">Arroz Cru</option>
-                                <!--<option value="Azeitonas sem Caroço">Azeitonas sem Caroço</option>-->
+                                <option value="Azeitonas sem Caroço">Azeitonas sem Caroço</option>
                                 <!--<option value="Bacon Picado">Bacon Picado</option>-->
                                 <!--<option value="Biscoitos de Maisena em Pedaços">Biscoitos de Maisena</option>-->
                                 <option value="Carne Moída">Carne Moída</option>
@@ -126,12 +126,13 @@
                                 <option value="Colher(es) de Sobremesa" v-if="ingredienteAtivo == 'Açúcar Cristal' || ingredienteAtivo == 'Coco Ralado' || ingredienteAtivo == 'Líquidos' || ingredienteAtivo == 'Manteiga' || ingredienteAtivo == 'Mel' || ingredienteAtivo == 'Pó de Café' || ingredienteAtivo == 'Sal'">Colher de Sobremesa</option>
                                 <option value="Colher(es) de Chá" v-if="ingredienteAtivo == 'Açúcar Cristal' || ingredienteAtivo == 'Coco Ralado'|| ingredienteAtivo == 'Líquidos' || ingredienteAtivo == 'Manteiga' || ingredienteAtivo == 'Mel' || ingredienteAtivo == 'Pó de Café' || ingredienteAtivo == 'Sal'">Colher de Chá</option>
                                 <option value="Colher(es) de Café" v-if="ingredienteAtivo == 'Açúcar Cristal' || ingredienteAtivo == 'Coco Ralado' || ingredienteAtivo == 'Líquidos' || ingredienteAtivo == 'Mel' || ingredienteAtivo == 'Café' || ingredienteAtivo == 'Sal'">Colher de Café</option>
-                                <option value="Xícara(s) de Chá" v-if="ingredienteAtivo == 'Açúcar Cristal' || ingredienteAtivo == 'Carne Moída' || ingredienteAtivo == 'Arroz Cru' || ingredienteAtivo == 'Coco Ralado' || ingredienteAtivo == 'Farinha de Trigo' || ingredienteAtivo == 'Feijão Cru' || ingredienteAtivo == 'Frango Desfiado' || ingredienteAtivo == 'Líquidos' || ingredienteAtivo == 'Mel' || ingredienteAtivo == 'Pó de Café'">Xícara de Chá</option>
-                                <option value="Copo(s) Americano(s)" v-if="ingredienteAtivo == 'Açúcar Cristal' || ingredienteAtivo == 'Coco Ralado' || ingredienteAtivo == 'Farinha de Trigo' || ingredienteAtivo == 'Arroz Cru' || ingredienteAtivo == 'Feijão Cru' || ingredienteAtivo == 'Líquidos' || ingredienteAtivo == 'Mel' || ingredienteAtivo == 'Pó de Café' || ingredienteAtivo == 'Carne Moída'">Copo Americano</option>
-                                <option value="Gramas" v-if="ingredienteAtivo == 'Açúcar Cristal' || ingredienteAtivo == 'Arroz Cru' || ingredienteAtivo == 'Carne Moída' || ingredienteAtivo == 'Coco Ralado' || ingredienteAtivo == 'Farinha de Trigo' || ingredienteAtivo == 'Feijão Cru' || ingredienteAtivo == 'Manteiga' || ingredienteAtivo == 'Mel' || ingredienteAtivo == 'Pó de Café' || ingredienteAtivo == 'Frango Desfiado' || ingredienteAtivo == 'Sal'">Gramas</option>
+                                <option value="Xícara(s) de Chá" v-if="ingredienteAtivo == 'Açúcar Cristal' || ingredienteAtivo == 'Carne Moída' || ingredienteAtivo == 'Arroz Cru' || ingredienteAtivo == 'Coco Ralado' || ingredienteAtivo == 'Farinha de Trigo' || ingredienteAtivo == 'Feijão Cru' || ingredienteAtivo == 'Frango Desfiado' || ingredienteAtivo == 'Líquidos' || ingredienteAtivo == 'Mel' || ingredienteAtivo == 'Pó de Café' || ingredienteAtivo == 'Azeitonas sem Caroço'">Xícara de Chá</option>
+                                <option value="Copo(s) Americano(s)" v-if="ingredienteAtivo == 'Açúcar Cristal' || ingredienteAtivo == 'Coco Ralado' || ingredienteAtivo == 'Farinha de Trigo' || ingredienteAtivo == 'Arroz Cru' || ingredienteAtivo == 'Feijão Cru' || ingredienteAtivo == 'Líquidos' || ingredienteAtivo == 'Mel' || ingredienteAtivo == 'Pó de Café' || ingredienteAtivo == 'Carne Moída' || ingredienteAtivo == 'Azeitonas sem Caroço'">Copo Americano</option>
+                                <option value="Gramas" v-if="ingredienteAtivo == 'Açúcar Cristal' || ingredienteAtivo == 'Arroz Cru' || ingredienteAtivo == 'Carne Moída' || ingredienteAtivo == 'Coco Ralado' || ingredienteAtivo == 'Farinha de Trigo' || ingredienteAtivo == 'Feijão Cru' || ingredienteAtivo == 'Manteiga' || ingredienteAtivo == 'Mel' || ingredienteAtivo == 'Pó de Café' || ingredienteAtivo == 'Frango Desfiado' || ingredienteAtivo == 'Sal' || ingredienteAtivo == 'Azeitonas sem Caroço'">Gramas</option>
                                 <option value="Quilo(s)" v-if="ingredienteAtivo == 'Açúcar Cristal' || ingredienteAtivo == 'Arroz Cru' || ingredienteAtivo == 'Carne Moída' || ingredienteAtivo == 'Farinha de Trigo'">Quilos</option>
                                 <option value="Mililitros (ML)" v-if="ingredienteAtivo == 'Líquidos' || ingredienteAtivo == 'Mel'">Mililitros (ML)</option>
                                 <option value="Litro(s)" v-if="ingredienteAtivo == 'Líquidos' || ingredienteAtivo == 'Mel'">Litros</option>
+                                <option value="Unidades" v-if="ingredienteAtivo == 'Azeitonas sem Caroço'">Unidade(s)</option>
                             </select>
                         </div>
                         <div class="area-input">
@@ -160,7 +161,7 @@
                     </div>
                     <!-- results -->
                     <div class="resultado">
-                        <p><strong class="tipo" v-if="medidaAtiva == 'Gramas' || medidaAtiva == 'Mililitros (ML)' || medidaAtiva == 'Litro(s)' || medidaAtiva == 'Quilo(s)'">{{inputvalue}}</strong><strong class="tipo" v-else>{{quantidadeAtiva}}</strong>
+                        <p><strong class="tipo" v-if="medidaAtiva == 'Gramas' || medidaAtiva == 'Mililitros (ML)' || medidaAtiva == 'Litro(s)' || medidaAtiva == 'Quilo(s)' || medidaAtiva == 'Unidades'">{{inputvalue}}</strong><strong class="tipo" v-else>{{quantidadeAtiva}}</strong>
                         <strong class="tipo">{{medidaAtiva}}</strong> de
                         <strong class="tipo">{{ingredienteAtivo}}</strong> equivale(m) a:</p><br>
                         <!-- Cálculos -->
@@ -174,6 +175,7 @@
                         <p v-if="Uquilos > 0">{{Uquilos}} <strong>Quilo(s)</strong>.</p>
                         <p v-if="Umililitros > 0">{{Umililitros}} <strong>Mililitros (ML)</strong>.</p>
                         <p v-if="Ulitros > 0">{{Ulitros}} <strong>Litro(s)</strong>.</p> 
+                        <p v-if="Unidades > 0">{{Unidades}} <strong>Unidade(s)</strong>.</p> 
                     </div><br><br><br>
                     <!-- texts and info -->
                     <p class="parag listas" v-if="ingredienteAtivo == 'Açúcar Cristal'">
@@ -201,6 +203,12 @@
                     <p class="parag listas" v-if="ingredienteAtivo == 'Feijão Cru'">
                         - Uma <strong>xícara de chá</strong> comporta aproximadamente <strong>250g</strong> de feijão cru.<br>
                         - Um <strong>copo americano</strong> comporta aproximadamente <strong>170g</strong> de feijão cru.
+                    </p>
+                    <p class="parag listas" v-if="ingredienteAtivo == 'Azeitonas sem Caroço'">
+                        - Uma <strong>Unidade</strong> de Azeitona sem Caroço Úmida pesa aproximadamente <strong>4,3g</strong>.<br>
+                        - Uma <strong>xícara de chá</strong> comporta aproximadamente <strong>130g</strong> de Azeitonas sem Caroço ou <strong>30 unidades</strong>.<br>
+                        - Um <strong>copo americano</strong> comporta aproximadamente <strong>95g</strong> de Azeitonas sem Caroço ou <strong>22 unidades</strong>.<br>
+                        - Uma <strong>xícara de café</strong> comporta aproximadamente <strong>34g</strong> de Azeitonas sem Caroço ou <strong>8 unidades</strong>.
                     </p>
                     <p class="parag listas" v-if="ingredienteAtivo == 'Frango Desfiado'">
                         - Uma <strong>colher de sopa</strong> comporta aproximadamente <strong>18g</strong> de frango desfiado.<br>

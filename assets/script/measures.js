@@ -20,6 +20,7 @@ const vm = new Vue({
         Uquilos: 0,
         Umililitros: 0,
         Ulitros: 0,
+        Unidades: 0,
         multiplicador: 1,
         inputvalue: 1,
         // ingredientes & medidas
@@ -132,8 +133,14 @@ const vm = new Vue({
                 "Gramas": { xicaraCha: 0.0058, colherSopa: 0.0417, colherCha: 0.125, colherSobremesa: 0.0625, colherCafe: 0.25, copoAmericano: 0.0072, Ugramas: 0, Uquilos: 0.001, Umililitros: 0, Ulitros: 0 },
                 "Quilo(s)": { xicaraCha: 5.8, colherSopa: 41.7, colherCha: 125, colherSobremesa: 62.5, colherCafe: 250, copoAmericano: 7.2, Ugramas: 1000, Uquilos: 0, Umililitros: 0, Ulitros: 0 },
                 "Copo(s) Americano(s)": { xicaraCha: 0.8, colherSopa: 5.8, colherCha: 17.3, colherSobremesa: 8.6, colherCafe: 34.5, copoAmericano: 0, Ugramas: 138, Uquilos: 0.138, Umililitros: 0, Ulitros: 0 }
-            }
-        },
+            },
+            "Azeitonas sem Caroço": {
+                "Xícara(s) de Chá": { xicaraCha: 0, colherSopa: 0, colherCha: 0, colherSobremesa: 0, colherCafe: 0, copoAmericano: 0.73, Ugramas: 130, Uquilos: 0.13, Unidades: 30, Umililitros: 0, Ulitros: 0 },
+                "Gramas": { xicaraCha: 0.0077, colherSopa: 0, colherCha: 0, colherSobremesa: 0, colherCafe: 0, copoAmericano: 0.0105, Ugramas: 0, Uquilos: 0.001, Unidade: 0.233, Umililitros: 0, Ulitros: 0 },
+                "Quilo(s)": { xicaraCha: 7.7, colherSopa: 0, colherCha: 0, colherSobremesa: 0, colherCafe: 0, copoAmericano: 10.5, Ugramas: 1000, Uquilos: 0, Unidades: 233, Umililitros: 0, Ulitros: 0 },
+                "Copo(s) Americano(s)": { xicaraCha: 1.37, colherSopa: 0, colherCha: 0, colherSobremesa: 0, colherCafe: 0, copoAmericano: 0, Ugramas: 95, Uquilos: 0.095, Unidades: 22, Umililitros: 0, Ulitros: 0 },
+                "Unidades": { xicaraCha: 0.0333334, colherSopa: 0, colherCha: 0, colherSobremesa: 0, colherCafe: 0, copoAmericano: 0.045, Ugramas: 4.3, Uquilos: 0.0043, Umililitros: 0, Ulitros: 0 }},
+            },
         resultados: {
             xicaraCha: 0,
             colherSopa: 0,
@@ -157,7 +164,7 @@ const vm = new Vue({
             const conversoes = this.valoresConversao[this.ingredienteAtivo]?.[this.medidaAtiva]
             if (conversoes) {
                 Object.keys(conversoes).forEach(key => {
-                    if (['Mililitros (ML)', 'Gramas', 'Litro(s)', 'Quilo(s)'].includes(this.medidaAtiva)) {
+                    if (['Mililitros (ML)', 'Gramas', 'Unidades', 'Litro(s)', 'Quilo(s)'].includes(this.medidaAtiva)) {
                         this[key] = (conversoes[key] * this.inputvalue).toFixed(1)
                     } else {
                         this[key] = (conversoes[key] * this.multiplicador).toFixed(1)
@@ -206,7 +213,8 @@ const vm = new Vue({
                 'Mel': 'Colher(es) de Sopa',
                 'Pó de Café': 'Xícara(s) de Chá',
                 'Sal': 'Colher(es) de Chá',
-                'Carne Moída': 'Xícara(s) de Chá'
+                'Carne Moída': 'Xícara(s) de Chá',
+                'Azeitonas sem Caroço': 'Xícara(s) de Chá'
             }
             this.medidaAtiva = medidas[this.ingredienteAtivo]
         },
