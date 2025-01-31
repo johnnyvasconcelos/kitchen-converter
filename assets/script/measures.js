@@ -53,6 +53,16 @@ const vm = new Vue({
                 "Gramas": { xicaraCha: 0.0057, colherSopa: 0.0571, colherCha: 0.1715, colherSobremesa: 0.0858, colherCafe: 0.3431, copoAmericano: 0.0071, Ugramas: 0, Uquilos: 0.001, Umililitros: 0, Ulitros: 0 },
                 "Quilo(s)": { xicaraCha: 5.71, colherSopa: 57.14, colherCha: 171.53, colherSobremesa: 85.76, colherCafe: 343.05, copoAmericano: 7.14, Ugramas: 1000, Uquilos: 0, Umililitros: 0, Ulitros: 0 }
             },
+           "Açúcar Refinado": {
+                "Xícara(s) de Chá": { xicaraCha: 0, colherSopa: 12.2222222222, colherCha: 42.7, colherSobremesa: 21.4, colherCafe: 85.6, copoAmericano: 1.12820512821, "Ugramas": 220, Uquilos: 0.220, Umililitros: 0, Ulitros: 0 },
+                "Copo(s) Americano(s)": { xicaraCha: 0.88636363636, colherSopa: 10.8333333333, colherCha: 32.5, colherSobremesa: 16.25, colherCafe: 65, copoAmericano: 0, Ugramas: 195, Uquilos: 0.195, Umililitros: 0, Ulitros: 0 },
+                "Colher(es) de Sopa": { xicaraCha: 0.08181818181, colherSopa: 0, colherCha: 3, colherSobremesa: 1.5, colherCafe: 6, copoAmericano: 0.12, Ugramas: 18, Uquilos: 0, Umililitros: 0, Ulitros: 0 },
+                "Colher(es) de Sobremesa": { xicaraCha: 0.066, colherSopa: 0.66, colherCha: 2, colherSobremesa: 0, colherCafe: 4, copoAmericano: 0.06153846153, Ugramas: 12, Uquilos: 0, Umililitros: 0, Ulitros: 0 },
+                "Colher(es) de Chá": { xicaraCha: 0, colherSopa: 0.33333333333, colherCha: 0, colherSobremesa: 0.5, colherCafe: 2, copoAmericano: 0, Ugramas: 6, Uquilos: 0, Umililitros: 0, Ulitros: 0 },
+                "Colher(es) de Café": { xicaraCha: 0, colherSopa: 0.16666666666, colherCha: 0.5, colherSobremesa: 0.25, colherCafe: 0, copoAmericano: 0, Ugramas: 3, Uquilos: 0, Umililitros: 0, Ulitros: 0 },
+                "Gramas": { xicaraCha: 0.00454545454, colherSopa: 0.05555555555, colherCha: 0.16666666666, colherSobremesa: 0.08333333333, colherCafe: 0.33333333333, copoAmericano: 0.00512820512, Ugramas: 0, Uquilos: 0.001, Umililitros: 0, Ulitros: 0 },
+                "Quilo(s)": { xicaraCha: 4.54545454545, colherSopa: 55.5555555556, colherCha: 42.7, colherSobremesa: 21.4, colherCafe: 85.6, copoAmericano: 7.8, Ugramas: 1000, Uquilos: 0, Umililitros: 0, Ulitros: 0 }
+            },
             "Arroz Cru": {
                 "Xícara(s) de Chá": { xicaraCha: 0, colherSopa: 16.15, colherCha: 48.46, colherSobremesa: 24.23, colherCafe: 96.92, copoAmericano: 1.25, Ugramas: 210, Uquilos: 0.21, Umililitros: 0, Ulitros: 0 },
                 "Copo(s) Americano(s)": { xicaraCha: 0.8, colherSopa: 12.92, colherCha: 38.46, colherSobremesa: 19.23, colherCafe: 76.92, copoAmericano: 0, Ugramas: 168, Uquilos: 0.168, Umililitros: 0, Ulitros: 0 },
@@ -267,6 +277,7 @@ const vm = new Vue({
             const medidas = {
                 'Arroz Cru': 'Xícara(s) de Chá',
                 'Açúcar Cristal': 'Colher(es) de Sopa',
+                'Açúcar Refinado': 'Colher(es) de Sopa',
                 'Farinha de Trigo': 'Xícara(s) de Chá',
                 'Feijão Cru': 'Gramas',
                 'Frango Desfiado': 'Gramas',

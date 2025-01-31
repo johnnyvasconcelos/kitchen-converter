@@ -90,7 +90,7 @@
                             <select  v-model="ingredienteAtivo">
                                 <option disabled value="">Selecione um Ingrediente:</option>
                                 <option value="Açúcar Cristal">Açúcar Cristal</option>
-                                <!--<option value="Açúcar Refinado">Açúcar Refinado</option>-->
+                                <option value="Açúcar Refinado">Açúcar Refinado</option>
                                 <option value="Arroz Cru">Arroz Cru</option>
                                 <option value="Azeitonas sem Caroço">Azeitonas sem Caroço</option>
                                 <!--<option value="Bacon Picado">Bacon Picado</option>-->
@@ -122,14 +122,14 @@
                             <label>Selecione uma Medida</label>
                             <select  v-model="medidaAtiva">
                                 <option disabled value="">Selecione uma Medida:</option>
-                                <option value="Colher(es) de Sopa" v-if="ingredienteAtivo == 'Açúcar Cristal' || ingredienteAtivo == 'Farinha de Trigo' || ingredienteAtivo == 'Líquidos' || ingredienteAtivo == 'Manteiga' || ingredienteAtivo == 'Mel' || ingredienteAtivo == 'Frango Desfiado' || ingredienteAtivo == 'Pó de Café' || ingredienteAtivo == 'Sal' || ingredienteAtivo == 'Carne Moída' || ingredienteAtivo == 'Grãos de Milho'">Colher de Sopa</option>
-                                <option value="Colher(es) de Sobremesa" v-if="ingredienteAtivo == 'Açúcar Cristal' || ingredienteAtivo == 'Coco Ralado' || ingredienteAtivo == 'Líquidos' || ingredienteAtivo == 'Manteiga' || ingredienteAtivo == 'Mel' || ingredienteAtivo == 'Pó de Café' || ingredienteAtivo == 'Sal' || ingredienteAtivo == 'Grãos de Milho'">Colher de Sobremesa</option>
-                                <option value="Colher(es) de Chá" v-if="ingredienteAtivo == 'Açúcar Cristal' || ingredienteAtivo == 'Coco Ralado'|| ingredienteAtivo == 'Líquidos' || ingredienteAtivo == 'Manteiga' || ingredienteAtivo == 'Mel' || ingredienteAtivo == 'Pó de Café' || ingredienteAtivo == 'Sal'">Colher de Chá</option>
-                                <option value="Colher(es) de Café" v-if="ingredienteAtivo == 'Açúcar Cristal' || ingredienteAtivo == 'Coco Ralado' || ingredienteAtivo == 'Líquidos' || ingredienteAtivo == 'Mel' || ingredienteAtivo == 'Café' || ingredienteAtivo == 'Sal'">Colher de Café</option>
-                                <option value="Xícara(s) de Chá" v-if="ingredienteAtivo == 'Açúcar Cristal' || ingredienteAtivo == 'Carne Moída' || ingredienteAtivo == 'Arroz Cru' || ingredienteAtivo == 'Coco Ralado' || ingredienteAtivo == 'Farinha de Trigo' || ingredienteAtivo == 'Feijão Cru' || ingredienteAtivo == 'Frango Desfiado' || ingredienteAtivo == 'Líquidos' || ingredienteAtivo == 'Mel' || ingredienteAtivo == 'Pó de Café' || ingredienteAtivo == 'Azeitonas sem Caroço' || ingredienteAtivo == 'Grãos de Milho'">Xícara de Chá</option>
-                                <option value="Copo(s) Americano(s)" v-if="ingredienteAtivo == 'Açúcar Cristal' || ingredienteAtivo == 'Coco Ralado' || ingredienteAtivo == 'Farinha de Trigo' || ingredienteAtivo == 'Arroz Cru' || ingredienteAtivo == 'Feijão Cru' || ingredienteAtivo == 'Líquidos' || ingredienteAtivo == 'Mel' || ingredienteAtivo == 'Pó de Café' || ingredienteAtivo == 'Carne Moída' || ingredienteAtivo == 'Azeitonas sem Caroço' || ingredienteAtivo == 'Grãos de Milho'">Copo Americano</option>
-                                <option value="Gramas" v-if="ingredienteAtivo == 'Açúcar Cristal' || ingredienteAtivo == 'Arroz Cru' || ingredienteAtivo == 'Carne Moída' || ingredienteAtivo == 'Coco Ralado' || ingredienteAtivo == 'Farinha de Trigo' || ingredienteAtivo == 'Feijão Cru' || ingredienteAtivo == 'Manteiga' || ingredienteAtivo == 'Mel' || ingredienteAtivo == 'Pó de Café' || ingredienteAtivo == 'Frango Desfiado' || ingredienteAtivo == 'Sal' || ingredienteAtivo == 'Azeitonas sem Caroço' || ingredienteAtivo == 'Grãos de Milho'">Gramas</option>
-                                <option value="Quilo(s)" v-if="ingredienteAtivo == 'Açúcar Cristal' || ingredienteAtivo == 'Arroz Cru' || ingredienteAtivo == 'Carne Moída' || ingredienteAtivo == 'Farinha de Trigo'">Quilos</option>
+                                <option value="Colher(es) de Sopa" v-if="ingredienteAtivo == 'Açúcar Cristal' || ingredienteAtivo == 'Farinha de Trigo' || ingredienteAtivo == 'Líquidos' || ingredienteAtivo == 'Manteiga' || ingredienteAtivo == 'Mel' || ingredienteAtivo == 'Frango Desfiado' || ingredienteAtivo == 'Pó de Café' || ingredienteAtivo == 'Sal' || ingredienteAtivo == 'Carne Moída' || ingredienteAtivo == 'Grãos de Milho' || ingredienteAtivo == 'Açúcar Refinado'">Colher de Sopa</option>
+                                <option value="Colher(es) de Sobremesa" v-if="ingredienteAtivo == 'Açúcar Cristal' || ingredienteAtivo == 'Coco Ralado' || ingredienteAtivo == 'Líquidos' || ingredienteAtivo == 'Manteiga' || ingredienteAtivo == 'Mel' || ingredienteAtivo == 'Pó de Café' || ingredienteAtivo == 'Sal' || ingredienteAtivo == 'Grãos de Milho' || ingredienteAtivo == 'Açúcar Refinado'">Colher de Sobremesa</option>
+                                <option value="Colher(es) de Chá" v-if="ingredienteAtivo == 'Açúcar Cristal' || ingredienteAtivo == 'Coco Ralado'|| ingredienteAtivo == 'Líquidos' || ingredienteAtivo == 'Manteiga' || ingredienteAtivo == 'Mel' || ingredienteAtivo == 'Pó de Café' || ingredienteAtivo == 'Sal' || ingredienteAtivo == 'Açúcar Refinado'">Colher de Chá</option>
+                                <option value="Colher(es) de Café" v-if="ingredienteAtivo == 'Açúcar Cristal' || ingredienteAtivo == 'Coco Ralado' || ingredienteAtivo == 'Líquidos' || ingredienteAtivo == 'Mel' || ingredienteAtivo == 'Café' || ingredienteAtivo == 'Sal' || ingredienteAtivo == 'Açúcar Refinado'">Colher de Café</option>
+                                <option value="Xícara(s) de Chá" v-if="ingredienteAtivo == 'Açúcar Cristal' || ingredienteAtivo == 'Carne Moída' || ingredienteAtivo == 'Arroz Cru' || ingredienteAtivo == 'Coco Ralado' || ingredienteAtivo == 'Farinha de Trigo' || ingredienteAtivo == 'Feijão Cru' || ingredienteAtivo == 'Frango Desfiado' || ingredienteAtivo == 'Líquidos' || ingredienteAtivo == 'Mel' || ingredienteAtivo == 'Pó de Café' || ingredienteAtivo == 'Azeitonas sem Caroço' || ingredienteAtivo == 'Grãos de Milho' || ingredienteAtivo == 'Açúcar Refinado'">Xícara de Chá</option>
+                                <option value="Copo(s) Americano(s)" v-if="ingredienteAtivo == 'Açúcar Cristal' || ingredienteAtivo == 'Coco Ralado' || ingredienteAtivo == 'Farinha de Trigo' || ingredienteAtivo == 'Arroz Cru' || ingredienteAtivo == 'Feijão Cru' || ingredienteAtivo == 'Líquidos' || ingredienteAtivo == 'Mel' || ingredienteAtivo == 'Pó de Café' || ingredienteAtivo == 'Carne Moída' || ingredienteAtivo == 'Azeitonas sem Caroço' || ingredienteAtivo == 'Grãos de Milho' || ingredienteAtivo == 'Açúcar Refinado'">Copo Americano</option>
+                                <option value="Gramas" v-if="ingredienteAtivo == 'Açúcar Cristal' || ingredienteAtivo == 'Arroz Cru' || ingredienteAtivo == 'Carne Moída' || ingredienteAtivo == 'Coco Ralado' || ingredienteAtivo == 'Farinha de Trigo' || ingredienteAtivo == 'Feijão Cru' || ingredienteAtivo == 'Manteiga' || ingredienteAtivo == 'Mel' || ingredienteAtivo == 'Pó de Café' || ingredienteAtivo == 'Frango Desfiado' || ingredienteAtivo == 'Sal' || ingredienteAtivo == 'Azeitonas sem Caroço' || ingredienteAtivo == 'Grãos de Milho' || ingredienteAtivo == 'Açúcar Refinado'">Gramas</option>
+                                <option value="Quilo(s)" v-if="ingredienteAtivo == 'Açúcar Cristal' || ingredienteAtivo == 'Arroz Cru' || ingredienteAtivo == 'Carne Moída' || ingredienteAtivo == 'Farinha de Trigo' || ingredienteAtivo == 'Açúcar Refinado'">Quilos</option>
                                 <option value="Mililitros (ML)" v-if="ingredienteAtivo == 'Líquidos' || ingredienteAtivo == 'Mel'">Mililitros (ML)</option>
                                 <option value="Litro(s)" v-if="ingredienteAtivo == 'Líquidos' || ingredienteAtivo == 'Mel'">Litros</option>
                                 <option value="Unidades" v-if="ingredienteAtivo == 'Azeitonas sem Caroço'">Unidade(s)</option>
@@ -179,12 +179,20 @@
                     </div><br><br><br>
                     <!-- texts and info -->
                     <p class="parag listas" v-if="ingredienteAtivo == 'Açúcar Cristal'">
-                        - Uma <strong>colher de sopa</strong> comporta aproximadamente <strong>17g</strong> de açúcar.<br>
-                        - Uma <strong>colher de sobremesa</strong> comporta aproximadamente <strong>11g</strong> de açúcar.<br>
-                        - Uma <strong>colher de chá</strong> comporta aproximadamente <strong>6g</strong> de açúcar.<br>
-                        - Uma <strong>colher de café</strong> comporta aproximadamente <strong>3g</strong> de açúcar.<br>
-                        - Uma <strong>xícara de chá</strong> comporta aproximadamente <strong>175g</strong> de açúcar.<br>
-                        - Um <strong>copo americano</strong> comporta aproximadamente <strong>140g</strong> de açúcar.
+                        - Uma <strong>colher de sopa</strong> comporta aproximadamente <strong>17g</strong> de açúcar cristal.<br>
+                        - Uma <strong>colher de sobremesa</strong> comporta aproximadamente <strong>11g</strong> de açúcar cristal.<br>
+                        - Uma <strong>colher de chá</strong> comporta aproximadamente <strong>6g</strong> de açúcar cristal.<br>
+                        - Uma <strong>colher de café</strong> comporta aproximadamente <strong>3g</strong> de açúcar cristal.<br>
+                        - Uma <strong>xícara de chá</strong> comporta aproximadamente <strong>175g</strong> de açúcar cristal.<br>
+                        - Um <strong>copo americano</strong> comporta aproximadamente <strong>140g</strong> de açúcar cristal.
+                    </p>
+                    <p class="parag listas" v-if="ingredienteAtivo == 'Açúcar Refinado'">
+                        - Uma <strong>colher de sopa</strong> comporta aproximadamente <strong>18g</strong> de açúcar refinado.<br>
+                        - Uma <strong>colher de sobremesa</strong> comporta aproximadamente <strong>12g</strong> de açúcar refinado.<br>
+                        - Uma <strong>colher de chá</strong> comporta aproximadamente <strong>6g</strong> de açúcar refinado.<br>
+                        - Uma <strong>colher de café</strong> comporta aproximadamente <strong>3g</strong> de açúcar refinado.<br>
+                        - Uma <strong>xícara de chá</strong> comporta aproximadamente <strong>220g</strong> de açúcar refinado.<br>
+                        - Um <strong>copo americano</strong> comporta aproximadamente <strong>195g</strong> de açúcar refinado.
                     </p>
                     <p class="parag listas" v-if="ingredienteAtivo == 'Carne Moída'">
                         - Uma <strong>colher de sopa</strong> comporta aproximadamente <strong>24g</strong> de carne moída.<br>
